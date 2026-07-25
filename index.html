@@ -3,984 +3,1668 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Vectify.io – AI Logo, Brand Creation, Mockups & Hire Professional Designers</title>
-<meta name="description" content="Create logos, build brand kits, generate mockups, vectorize designs, remove backgrounds, use creative tools, earn money and hire creatives in one platform." />
+<title>Vectify.io – AI Logo, Brand Creation & Design Tools</title>
+<meta name="description" content="Generate logos, build brand kits, vectorize images, remove backgrounds — free AI design tools in one platform." />
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0b0f1a;
+  --bg2: #111827;
+  --bg3: #1a2236;
+  --accent: #6c63ff;
+  --accent2: #a78bfa;
+  --accent3: #38bdf8;
+  --text: #f0f4ff;
+  --text2: #94a3b8;
+  --text3: #64748b;
+  --border: rgba(108,99,255,0.22);
+  --border2: rgba(255,255,255,0.07);
+  --card: rgba(255,255,255,0.04);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+input, textarea, select, button { font-family: var(--font-body); }
 
-  :root {
-    --bg: #0b0f1a;
-    --bg2: #111827;
-    --bg3: #1a2236;
-    --accent: #6c63ff;
-    --accent2: #a78bfa;
-    --accent3: #38bdf8;
-    --text: #f0f4ff;
-    --text2: #94a3b8;
-    --text3: #64748b;
-    --border: rgba(108,99,255,0.18);
-    --border2: rgba(255,255,255,0.07);
-    --card: rgba(255,255,255,0.04);
-    --radius: 16px;
-    --radius-sm: 10px;
-    --font-display: 'Syne', sans-serif;
-    --font-body: 'Inter', sans-serif;
-  }
+/* ─── PAGE SYSTEM ─── */
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
 
-  html { scroll-behavior: smooth; }
+/* ─── NAV ─── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 64px;
+  background: rgba(11,15,26,0.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border2);
+}
+.logo {
+  font-family: var(--font-display); font-weight: 800; font-size: 1.3rem;
+  letter-spacing: -0.5px; color: var(--text);
+  display: flex; align-items: center; gap: 9px; cursor: pointer;
+}
+.logo-mark {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--accent), var(--accent3));
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800; color: #fff;
+}
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text2); transition: color 0.2s; cursor: pointer; }
+.nav-links a:hover, .nav-links a.active-link { color: var(--text); }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.875rem; font-weight: 500; padding: 9px 20px;
+  border-radius: var(--radius-sm); cursor: pointer; border: none;
+  transition: all 0.2s; text-decoration: none; font-family: var(--font-body);
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: #5a52e0; transform: translateY(-1px); }
+.btn-large { padding: 14px 28px; font-size: 1rem; }
+.btn-outline {
+  background: transparent; color: var(--text2);
+  border: 1px solid var(--border2); cursor: pointer;
+}
+.btn-outline:hover { border-color: var(--border); color: var(--text); }
+.btn-outline-large {
+  padding: 13px 28px; font-size: 1rem; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); color: var(--text2); background: transparent;
+  font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: var(--font-body);
+}
+.btn-outline-large:hover { border-color: var(--accent); color: var(--text); }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
+/* ─── SHARED LAYOUT ─── */
+.section { padding: 80px 2.5rem; max-width: 1160px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 52px; }
+.section-label { font-size: 0.73rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 12px; }
+.section-header h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.5rem); letter-spacing: -0.7px; color: var(--text); margin-bottom: 14px; }
+.section-header p { font-size: 1rem; color: var(--text2); max-width: 460px; margin: 0 auto; }
+.divider { border: none; border-top: 1px solid var(--border2); margin: 0 2.5rem; }
 
-  a { color: inherit; text-decoration: none; }
+/* ─── HERO ─── */
+.hero {
+  position: relative; padding: 110px 2.5rem 90px;
+  text-align: center; overflow: hidden;
+}
+.hero-glow {
+  position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+  width: 700px; height: 500px;
+  background: radial-gradient(ellipse, rgba(108,99,255,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; background: rgba(108,99,255,0.1);
+  border: 1px solid rgba(108,99,255,0.28); border-radius: 999px;
+  font-size: 0.76rem; font-weight: 600; color: var(--accent2);
+  letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 28px;
+}
+.eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+h1 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.1;
+  letter-spacing: -1.5px; color: var(--text); margin-bottom: 20px;
+  max-width: 800px; margin-left: auto; margin-right: auto;
+}
+h1 span {
+  background: linear-gradient(135deg, var(--accent2), var(--accent3));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub { font-size: 1.1rem; color: var(--text2); max-width: 540px; margin: 0 auto 40px; font-weight: 400; line-height: 1.8; }
+.hero-cta { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.hero-meta { margin-top: 28px; font-size: 0.8rem; color: var(--text3); display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
+.hero-meta span { display: flex; align-items: center; gap: 5px; }
+.meta-dot { width: 3px; height: 3px; background: var(--text3); border-radius: 50%; }
 
-  /* ── NAV ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
-    height: 64px;
-    background: rgba(11,15,26,0.85);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border2);
-  }
+/* ─── STATS ─── */
+.stats-row {
+  display: flex; align-items: stretch; justify-content: center;
+  border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2);
+  flex-wrap: wrap;
+}
+.stat { flex: 1; min-width: 150px; text-align: center; padding: 32px 20px; position: relative; }
+.stat + .stat::before { content: ''; position: absolute; left: 0; top: 20%; bottom: 20%; width: 1px; background: var(--border2); }
+.stat-num {
+  font-family: var(--font-display); font-weight: 800; font-size: 2rem;
+  letter-spacing: -1px; display: block; margin-bottom: 4px;
+  background: linear-gradient(135deg, var(--accent2), var(--accent3));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-label { font-size: 0.82rem; color: var(--text3); }
 
-  .logo {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.35rem;
-    letter-spacing: -0.5px;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .logo-mark {
-    width: 32px; height: 32px;
-    background: linear-gradient(135deg, var(--accent), var(--accent3));
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; font-weight: 800; color: #fff; font-family: var(--font-display);
-  }
+/* ─── FEATURE CARDS ─── */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
+.feature-card {
+  background: var(--card); border: 1px solid var(--border2); border-radius: var(--radius);
+  padding: 28px; position: relative; overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s; cursor: pointer; display: block; color: inherit;
+}
+.feature-card:hover { border-color: rgba(108,99,255,0.35); transform: translateY(-3px); }
+.feature-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent3)); opacity: 0; transition: opacity 0.25s;
+}
+.feature-card:hover::before { opacity: 1; }
+.feature-icon {
+  width: 44px; height: 44px; background: rgba(108,99,255,0.1);
+  border: 1px solid rgba(108,99,255,0.18); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 18px; font-size: 20px;
+}
+.feature-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 8px; letter-spacing: -0.2px; }
+.feature-card p { font-size: 0.87rem; color: var(--text2); line-height: 1.65; }
+.feature-arrow { margin-top: 18px; font-size: 0.81rem; color: var(--accent2); display: flex; align-items: center; gap: 4px; font-weight: 500; transition: gap 0.2s; }
+.feature-card:hover .feature-arrow { gap: 8px; }
+.badge { display: inline-flex; padding: 2px 9px; border-radius: 999px; font-size: 0.68rem; font-weight: 600; background: rgba(56,189,248,0.1); color: var(--accent3); border: 1px solid rgba(56,189,248,0.2); margin-left: 7px; vertical-align: middle; font-family: var(--font-body); }
 
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text2);
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
+/* ─── TOOLS GRID ─── */
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.tool-pill {
+  background: var(--card); border: 1px solid var(--border2); border-radius: var(--radius-sm);
+  padding: 16px 18px; display: flex; align-items: center; gap: 12px;
+  transition: all 0.2s; cursor: pointer; color: inherit; display: flex;
+}
+.tool-pill:hover { border-color: rgba(108,99,255,0.3); background: rgba(108,99,255,0.06); }
+.tool-pill-icon { font-size: 20px; flex-shrink: 0; }
+.tool-pill-text { font-size: 0.875rem; font-weight: 500; color: var(--text); }
+.tool-pill-desc { font-size: 0.76rem; color: var(--text3); margin-top: 2px; }
 
-  .nav-right { display: flex; align-items: center; gap: 12px; }
+/* ─── HOW IT WORKS ─── */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; position: relative; }
+.steps::before { content: ''; position: absolute; top: 22px; left: 36px; right: 36px; height: 1px; background: linear-gradient(90deg, var(--accent), var(--accent3)); opacity: 0.2; }
+.step { position: relative; }
+.step-num {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--bg3);
+  border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.85rem; color: var(--accent2);
+  margin-bottom: 20px; position: relative; z-index: 1;
+}
+.step h4 { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+.step p { font-size: 0.86rem; color: var(--text2); line-height: 1.65; }
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    font-weight: 500;
-    padding: 9px 20px;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    border: none;
-    transition: all 0.2s;
-    text-decoration: none;
-  }
-  .btn-ghost {
-    background: transparent;
-    color: var(--text2);
-    border: 1px solid var(--border2);
-  }
-  .btn-ghost:hover { color: var(--text); border-color: var(--border); }
+/* ─── TESTIMONIALS ─── */
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+.testimonial-card { background: var(--card); border: 1px solid var(--border2); border-radius: var(--radius); padding: 28px; }
+.testimonial-stars { color: #fbbf24; font-size: 13px; letter-spacing: 2px; margin-bottom: 14px; }
+.testimonial-text { font-size: 0.91rem; color: var(--text2); line-height: 1.75; margin-bottom: 20px; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; flex-shrink: 0; }
+.av-a { background: linear-gradient(135deg, #6c63ff, #38bdf8); }
+.av-b { background: linear-gradient(135deg, #a78bfa, #f472b6); }
+.av-c { background: linear-gradient(135deg, #38bdf8, #34d399); }
+.author-name { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+.author-role { font-size: 0.77rem; color: var(--text3); margin-top: 1px; }
 
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-  }
-  .btn-primary:hover { background: #5a52e0; transform: translateY(-1px); }
+/* ─── CTA BANNER ─── */
+.cta-banner {
+  margin: 0 2.5rem 80px;
+  background: linear-gradient(135deg, rgba(108,99,255,0.13), rgba(56,189,248,0.07));
+  border: 1px solid rgba(108,99,255,0.22); border-radius: 22px;
+  padding: 72px 40px; text-align: center; position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+  width: 500px; height: 300px;
+  background: radial-gradient(ellipse, rgba(108,99,255,0.16) 0%, transparent 70%); pointer-events: none;
+}
+.cta-banner h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -1px; color: var(--text); margin-bottom: 14px; position: relative; z-index: 1; }
+.cta-banner p { color: var(--text2); font-size: 1rem; max-width: 440px; margin: 0 auto 32px; position: relative; z-index: 1; }
+.cta-banner .hero-cta { position: relative; z-index: 1; }
 
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    padding: 100px 2rem 80px;
-    text-align: center;
-    overflow: hidden;
-  }
+/* ─── FOOTER ─── */
+footer { border-top: 1px solid var(--border2); padding: 52px 2.5rem 32px; max-width: 1160px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; margin-bottom: 48px; }
+.footer-brand p { font-size: 0.85rem; color: var(--text3); line-height: 1.7; margin-top: 14px; max-width: 230px; }
+.footer-col h5 { font-family: var(--font-display); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); margin-bottom: 16px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { font-size: 0.875rem; color: var(--text2); transition: color 0.2s; cursor: pointer; }
+.footer-col ul li a:hover { color: var(--text); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; border-top: 1px solid var(--border2); font-size: 0.79rem; color: var(--text3); flex-wrap: wrap; gap: 12px; }
+.footer-socials { display: flex; gap: 18px; }
+.footer-socials a { color: var(--text3); font-size: 0.79rem; transition: color 0.2s; cursor: pointer; }
+.footer-socials a:hover { color: var(--text2); }
 
-  .hero-glow {
-    position: absolute;
-    top: -120px; left: 50%;
-    transform: translateX(-50%);
-    width: 700px; height: 500px;
-    background: radial-gradient(ellipse, rgba(108,99,255,0.22) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-glow2 {
-    position: absolute;
-    top: 60px; left: 50%;
-    transform: translateX(-50%);
-    width: 400px; height: 300px;
-    background: radial-gradient(ellipse, rgba(56,189,248,0.10) 0%, transparent 70%);
-    pointer-events: none;
-  }
+/* ─── TOOL PAGES ─── */
+.tool-page { max-width: 860px; margin: 0 auto; padding: 60px 2.5rem 100px; }
+.tool-page-header { margin-bottom: 40px; }
+.back-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 0.85rem; color: var(--text3); cursor: pointer; transition: color 0.2s; margin-bottom: 28px; background: none; border: none; padding: 0; }
+.back-btn:hover { color: var(--text2); }
+.tool-page-header h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.8px; margin-bottom: 10px; font-size: 2rem; }
+.tool-page-header p { color: var(--text2); font-size: 0.97rem; }
+.tool-card { background: var(--card); border: 1px solid var(--border2); border-radius: var(--radius); padding: 36px; margin-bottom: 20px; }
+.tool-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; margin-bottom: 18px; color: var(--text); }
 
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    background: rgba(108,99,255,0.12);
-    border: 1px solid rgba(108,99,255,0.3);
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--accent2);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-  }
-  .eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
+/* ─── FORM ELEMENTS ─── */
+.field { margin-bottom: 18px; }
+.field label { display: block; font-size: 0.83rem; font-weight: 500; color: var(--text2); margin-bottom: 7px; }
+.field input, .field textarea, .field select {
+  width: 100%; padding: 11px 14px; background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border2); border-radius: var(--radius-sm);
+  color: var(--text); font-size: 0.9rem; outline: none;
+  transition: border-color 0.2s;
+}
+.field input:focus, .field textarea:focus, .field select:focus { border-color: var(--accent); }
+.field select option { background: #1a2236; }
+.field textarea { resize: vertical; min-height: 90px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
-  h1 {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(2.5rem, 6vw, 4.2rem);
-    line-height: 1.1;
-    letter-spacing: -1.5px;
-    color: var(--text);
-    margin-bottom: 20px;
-    max-width: 820px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  h1 span {
-    background: linear-gradient(135deg, var(--accent2), var(--accent3));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+/* ─── UPLOAD ZONE ─── */
+.upload-zone {
+  border: 2px dashed var(--border2); border-radius: var(--radius);
+  padding: 52px 24px; text-align: center; cursor: pointer; transition: all 0.2s;
+  position: relative;
+}
+.upload-zone:hover, .upload-zone.drag-over { border-color: var(--accent); background: rgba(108,99,255,0.05); }
+.upload-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.upload-icon { font-size: 40px; margin-bottom: 12px; }
+.upload-zone h4 { font-family: var(--font-display); font-weight: 600; font-size: 1rem; color: var(--text); margin-bottom: 6px; }
+.upload-zone p { font-size: 0.83rem; color: var(--text3); }
+.upload-zone .formats { font-size: 0.76rem; color: var(--text3); margin-top: 12px; padding: 5px 12px; border: 1px solid var(--border2); border-radius: 999px; display: inline-block; }
 
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--text2);
-    max-width: 560px;
-    margin: 0 auto 40px;
-    font-weight: 400;
-    line-height: 1.8;
-  }
+/* ─── RESULT AREA ─── */
+.result-area { display: none; margin-top: 24px; }
+.result-area.show { display: block; }
+.result-box { background: rgba(108,99,255,0.07); border: 1px solid rgba(108,99,255,0.2); border-radius: var(--radius); padding: 28px; text-align: center; }
+.result-box p { color: var(--text2); font-size: 0.9rem; margin-bottom: 16px; }
+.processing { display: none; }
+.processing.show { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 24px; color: var(--text2); font-size: 0.9rem; }
+.spinner { width: 20px; height: 20px; border: 2px solid var(--border2); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.progress-bar { height: 4px; background: var(--border2); border-radius: 99px; overflow: hidden; margin-top: 8px; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent3)); border-radius: 99px; transition: width 0.3s; }
 
-  .hero-cta {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-  .btn-large {
-    padding: 14px 28px;
-    font-size: 1rem;
-    border-radius: var(--radius-sm);
-  }
-  .btn-outline-large {
-    padding: 13px 28px;
-    font-size: 1rem;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    color: var(--text2);
-    background: transparent;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn-outline-large:hover { border-color: var(--accent); color: var(--text); }
+/* ─── COLOR SWATCHES ─── */
+.swatch-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 16px; }
+.swatch { border-radius: 10px; height: 64px; cursor: pointer; position: relative; transition: transform 0.15s; }
+.swatch:hover { transform: scale(1.05); }
+.swatch-label { font-size: 0.72rem; text-align: center; margin-top: 5px; color: var(--text3); }
+.palette-row { display: flex; gap: 8px; margin-top: 16px; }
+.palette-swatch { flex: 1; height: 52px; border-radius: 8px; cursor: pointer; transition: transform 0.15s; }
+.palette-swatch:hover { transform: scaleY(1.06); }
 
-  .hero-meta {
-    margin-top: 28px;
-    font-size: 0.82rem;
-    color: var(--text3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-  }
-  .hero-meta span { display: flex; align-items: center; gap: 5px; }
-  .meta-dot { width: 4px; height: 4px; background: var(--text3); border-radius: 50%; }
+/* ─── FONT CARDS ─── */
+.font-pair { background: var(--bg3); border: 1px solid var(--border2); border-radius: var(--radius); padding: 24px; margin-bottom: 14px; }
+.font-display-sample { font-size: 1.8rem; line-height: 1.2; color: var(--text); margin-bottom: 4px; }
+.font-body-sample { font-size: 0.92rem; color: var(--text2); line-height: 1.6; }
+.font-meta { display: flex; gap: 8px; margin-top: 14px; }
+.font-tag { font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; background: rgba(108,99,255,0.1); border: 1px solid rgba(108,99,255,0.18); color: var(--accent2); }
 
-  /* ── SECTION LABEL ── */
-  .section-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent2);
-    margin-bottom: 12px;
-  }
+/* ─── LOGO OUTPUT ─── */
+.logo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
+.logo-option {
+  background: var(--bg3); border: 2px solid var(--border2); border-radius: var(--radius);
+  padding: 32px 20px; text-align: center; cursor: pointer; transition: all 0.2s;
+}
+.logo-option:hover, .logo-option.selected { border-color: var(--accent); background: rgba(108,99,255,0.08); }
+.logo-option svg { margin-bottom: 12px; }
+.logo-option-name { font-size: 0.8rem; color: var(--text3); }
 
-  /* ── FEATURES GRID ── */
-  .section {
-    padding: 80px 2rem;
-    max-width: 1180px;
-    margin: 0 auto;
-  }
-  .section-header {
-    text-align: center;
-    margin-bottom: 56px;
-  }
-  .section-header h2 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    letter-spacing: -0.8px;
-    color: var(--text);
-    margin-bottom: 14px;
-  }
-  .section-header p {
-    font-size: 1rem;
-    color: var(--text2);
-    max-width: 480px;
-    margin: 0 auto;
-  }
+/* ─── BRAND KIT ─── */
+.brand-kit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.kit-block { background: var(--bg3); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: 20px; }
+.kit-block h5 { font-size: 0.77rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text3); margin-bottom: 14px; }
 
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
+/* ─── PROMPT GENERATOR ─── */
+.prompt-output {
+  background: rgba(108,99,255,0.06); border: 1px solid rgba(108,99,255,0.18);
+  border-radius: var(--radius-sm); padding: 18px 20px; font-size: 0.9rem;
+  color: var(--text2); line-height: 1.7; margin-top: 16px; min-height: 80px; position: relative;
+}
+.copy-btn { position: absolute; top: 12px; right: 12px; background: rgba(108,99,255,0.15); border: 1px solid var(--border); color: var(--accent2); padding: 4px 12px; border-radius: 6px; font-size: 0.76rem; cursor: pointer; transition: all 0.2s; }
+.copy-btn:hover { background: rgba(108,99,255,0.25); }
 
-  .feature-card {
-    background: var(--card);
-    border: 1px solid var(--border2);
-    border-radius: var(--radius);
-    padding: 28px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.25s, transform 0.25s;
-    cursor: pointer;
-    text-decoration: none;
-    display: block;
-    color: inherit;
-  }
-  .feature-card:hover {
-    border-color: var(--border);
-    transform: translateY(-3px);
-  }
-  .feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent3));
-    opacity: 0;
-    transition: opacity 0.25s;
-  }
-  .feature-card:hover::before { opacity: 1; }
+/* ─── DISCOVER GRID ─── */
+.discover-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.discover-card { background: var(--card); border: 1px solid var(--border2); border-radius: var(--radius); overflow: hidden; transition: all 0.2s; cursor: pointer; }
+.discover-card:hover { border-color: rgba(108,99,255,0.3); transform: translateY(-2px); }
+.discover-thumb { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+.discover-info { padding: 14px 16px; }
+.discover-info h4 { font-size: 0.875rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.discover-info p { font-size: 0.78rem; color: var(--text3); }
 
-  .feature-icon {
-    width: 44px; height: 44px;
-    background: rgba(108,99,255,0.12);
-    border: 1px solid rgba(108,99,255,0.2);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 18px;
-    font-size: 20px;
-  }
+/* ─── HIRE PAGE ─── */
+.designer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+.designer-card { background: var(--card); border: 1px solid var(--border2); border-radius: var(--radius); padding: 24px; transition: all 0.2s; cursor: pointer; }
+.designer-card:hover { border-color: rgba(108,99,255,0.3); transform: translateY(-2px); }
+.designer-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.designer-avatar { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: #fff; flex-shrink: 0; }
+.d1 { background: linear-gradient(135deg, #6c63ff, #38bdf8); }
+.d2 { background: linear-gradient(135deg, #a78bfa, #f472b6); }
+.d3 { background: linear-gradient(135deg, #38bdf8, #34d399); }
+.d4 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+.d5 { background: linear-gradient(135deg, #34d399, #6c63ff); }
+.d6 { background: linear-gradient(135deg, #f472b6, #f59e0b); }
+.designer-name { font-weight: 600; font-size: 0.95rem; color: var(--text); }
+.designer-role { font-size: 0.79rem; color: var(--text3); margin-top: 2px; }
+.designer-stars { color: #fbbf24; font-size: 12px; }
+.designer-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
+.tag { font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid var(--border2); color: var(--text3); }
+.designer-price { font-size: 0.85rem; color: var(--text2); }
+.designer-price strong { color: var(--accent2); font-size: 1rem; }
+.hire-btn { width: 100%; margin-top: 14px; padding: 10px; background: rgba(108,99,255,0.12); border: 1px solid rgba(108,99,255,0.25); color: var(--accent2); border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+.hire-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-  .feature-card h3 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: var(--text);
-    margin-bottom: 8px;
-    letter-spacing: -0.2px;
-  }
-  .feature-card p {
-    font-size: 0.88rem;
-    color: var(--text2);
-    line-height: 1.65;
-  }
-  .feature-arrow {
-    margin-top: 18px;
-    font-size: 0.82rem;
-    color: var(--accent2);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-weight: 500;
-    transition: gap 0.2s;
-  }
-  .feature-card:hover .feature-arrow { gap: 8px; }
+/* ─── MODAL ─── */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 300; align-items: center; justify-content: center; }
+.modal-overlay.show { display: flex; }
+.modal { background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 36px; max-width: 440px; width: 90%; }
+.modal h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; margin-bottom: 8px; }
+.modal p { font-size: 0.9rem; color: var(--text2); margin-bottom: 24px; }
+.modal-close { float: right; background: none; border: none; color: var(--text3); font-size: 1.2rem; cursor: pointer; margin-top: -4px; }
 
-  /* ── DIVIDER ── */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border2);
-    margin: 0 2rem;
-  }
+/* ─── TOAST ─── */
+.toast { position: fixed; bottom: 28px; right: 28px; background: var(--bg3); border: 1px solid rgba(108,99,255,0.3); border-radius: var(--radius-sm); padding: 14px 20px; font-size: 0.875rem; color: var(--text); z-index: 400; transform: translateY(80px); opacity: 0; transition: all 0.3s; max-width: 320px; }
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.success { border-color: rgba(52,211,153,0.3); }
 
-  /* ── TOOLS SECTION ── */
-  .tools-section {
-    padding: 80px 2rem;
-    max-width: 1180px;
-    margin: 0 auto;
-  }
+/* ─── TABS ─── */
+.tabs { display: flex; gap: 4px; margin-bottom: 28px; background: rgba(255,255,255,0.03); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: 4px; width: fit-content; }
+.tab-btn { padding: 8px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text3); background: transparent; border: none; cursor: pointer; transition: all 0.2s; }
+.tab-btn.active { background: var(--accent); color: #fff; }
 
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
-  }
-  .tool-pill {
-    background: var(--card);
-    border: 1px solid var(--border2);
-    border-radius: var(--radius-sm);
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: all 0.2s;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-  }
-  .tool-pill:hover {
-    border-color: var(--border);
-    background: rgba(108,99,255,0.06);
-  }
-  .tool-pill-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .tool-pill-text {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text);
-  }
-  .tool-pill-desc {
-    font-size: 0.77rem;
-    color: var(--text3);
-    margin-top: 2px;
-  }
+/* ─── INDUSTRY TAGS ─── */
+.industry-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.industry-tag { background: var(--card); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: 14px 16px; text-align: center; cursor: pointer; transition: all 0.2s; }
+.industry-tag:hover { border-color: rgba(108,99,255,0.3); background: rgba(108,99,255,0.06); }
+.industry-tag span { display: block; font-size: 1.4rem; margin-bottom: 6px; }
+.industry-tag p { font-size: 0.8rem; color: var(--text2); font-weight: 500; }
 
-  /* ── HOW IT WORKS ── */
-  .how-section {
-    padding: 80px 2rem;
-    max-width: 1180px;
-    margin: 0 auto;
-  }
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 0;
-    position: relative;
-  }
-  .steps::before {
-    content: '';
-    position: absolute;
-    top: 22px; left: 36px; right: 36px;
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent), var(--accent3));
-    opacity: 0.3;
-  }
-  .step {
-    padding: 0 20px 0 0;
-    position: relative;
-  }
-  .step-num {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: var(--bg3);
-    border: 2px solid var(--accent);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.875rem;
-    color: var(--accent2);
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 1;
-  }
-  .step h4 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-  .step p { font-size: 0.86rem; color: var(--text2); line-height: 1.6; }
-
-  /* ── SOCIAL PROOF ── */
-  .stats-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    padding: 56px 2rem;
-    border-top: 1px solid var(--border2);
-    border-bottom: 1px solid var(--border2);
-    flex-wrap: wrap;
-  }
-  .stat {
-    flex: 1;
-    min-width: 160px;
-    text-align: center;
-    padding: 20px 24px;
-    position: relative;
-  }
-  .stat + .stat::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 20%; bottom: 20%;
-    width: 1px;
-    background: var(--border2);
-  }
-  .stat-num {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 2.2rem;
-    letter-spacing: -1px;
-    background: linear-gradient(135deg, var(--accent2), var(--accent3));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: block;
-    margin-bottom: 4px;
-  }
-  .stat-label { font-size: 0.82rem; color: var(--text3); font-weight: 400; }
-
-  /* ── TESTIMONIALS ── */
-  .testimonials {
-    padding: 80px 2rem;
-    max-width: 1180px;
-    margin: 0 auto;
-  }
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
-  .testimonial-card {
-    background: var(--card);
-    border: 1px solid var(--border2);
-    border-radius: var(--radius);
-    padding: 28px;
-  }
-  .testimonial-stars {
-    color: #fbbf24;
-    font-size: 14px;
-    letter-spacing: 2px;
-    margin-bottom: 14px;
-  }
-  .testimonial-text {
-    font-size: 0.92rem;
-    color: var(--text2);
-    line-height: 1.75;
-    margin-bottom: 20px;
-  }
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .avatar {
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 14px; color: #fff;
-    flex-shrink: 0;
-  }
-  .avatar-a { background: linear-gradient(135deg, #6c63ff, #38bdf8); }
-  .avatar-b { background: linear-gradient(135deg, #a78bfa, #f472b6); }
-  .avatar-c { background: linear-gradient(135deg, #38bdf8, #34d399); }
-  .author-name { font-size: 0.875rem; font-weight: 600; color: var(--text); }
-  .author-role { font-size: 0.78rem; color: var(--text3); margin-top: 1px; }
-
-  /* ── CTA BANNER ── */
-  .cta-banner {
-    margin: 0 2rem 80px;
-    background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(56,189,248,0.08));
-    border: 1px solid rgba(108,99,255,0.25);
-    border-radius: 24px;
-    padding: 72px 40px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-banner::before {
-    content: '';
-    position: absolute;
-    top: -80px; left: 50%;
-    transform: translateX(-50%);
-    width: 500px; height: 300px;
-    background: radial-gradient(ellipse, rgba(108,99,255,0.18) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .cta-banner h2 {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    letter-spacing: -1px;
-    color: var(--text);
-    margin-bottom: 14px;
-    position: relative;
-    z-index: 1;
-  }
-  .cta-banner p {
-    color: var(--text2);
-    font-size: 1rem;
-    max-width: 460px;
-    margin: 0 auto 32px;
-    position: relative;
-    z-index: 1;
-  }
-  .cta-banner .hero-cta { position: relative; z-index: 1; }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border2);
-    padding: 48px 2rem 32px;
-    max-width: 1180px;
-    margin: 0 auto;
-  }
-  .footer-top {
-    display: grid;
-    grid-template-columns: 1.4fr repeat(3, 1fr);
-    gap: 40px;
-    margin-bottom: 48px;
-  }
-  .footer-brand p {
-    font-size: 0.86rem;
-    color: var(--text3);
-    line-height: 1.7;
-    margin-top: 12px;
-    max-width: 240px;
-  }
-  .footer-col h5 {
-    font-family: var(--font-display);
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text3);
-    margin-bottom: 16px;
-  }
-  .footer-col ul { list-style: none; }
-  .footer-col ul li { margin-bottom: 10px; }
-  .footer-col ul li a {
-    font-size: 0.875rem;
-    color: var(--text2);
-    transition: color 0.2s;
-  }
-  .footer-col ul li a:hover { color: var(--text); }
-  .footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 28px;
-    border-top: 1px solid var(--border2);
-    font-size: 0.8rem;
-    color: var(--text3);
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .footer-socials { display: flex; gap: 16px; }
-  .footer-socials a {
-    color: var(--text3);
-    font-size: 0.8rem;
-    transition: color 0.2s;
-  }
-  .footer-socials a:hover { color: var(--text2); }
-
-  /* ── BADGE ── */
-  .badge {
-    display: inline-flex;
-    padding: 3px 10px;
-    border-radius: 999px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    background: rgba(56,189,248,0.12);
-    color: var(--accent3);
-    border: 1px solid rgba(56,189,248,0.25);
-    margin-left: 8px;
-    vertical-align: middle;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    h1 { font-size: 2.2rem; }
-    .steps::before { display: none; }
-    .steps { gap: 28px; }
-    .step { padding: 0; }
-    .footer-top { grid-template-columns: 1fr 1fr; }
-    .stat + .stat::before { display: none; }
-    .stats-row { gap: 0; }
-    .cta-banner { padding: 48px 24px; }
-  }
-  @media (max-width: 480px) {
-    .footer-top { grid-template-columns: 1fr; }
-    nav { padding: 0 1.2rem; }
-    .hero { padding: 72px 1.2rem 60px; }
-  }
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  h1 { font-size: 2rem; }
+  .steps::before { display: none; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .stat + .stat::before { display: none; }
+  .field-row { grid-template-columns: 1fr; }
+  .brand-kit { grid-template-columns: 1fr; }
+  .cta-banner { padding: 48px 24px; }
+}
+@media (max-width: 480px) {
+  .footer-top { grid-template-columns: 1fr; }
+  nav { padding: 0 1.2rem; }
+  .hero { padding: 72px 1.2rem 60px; }
+  .section { padding: 60px 1.2rem; }
+  .tool-page { padding: 40px 1.2rem 80px; }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════ -->
 <nav>
-  <a href="#" class="logo">
+  <div class="logo" onclick="showPage('home')">
     <div class="logo-mark">V</div>
     Vectify<span style="color:var(--accent2)">.io</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#tools">Tools</a></li>
-    <li><a href="#how">How it works</a></li>
-    <li><a href="#discover">Discover</a></li>
-    <li><a href="#hire">Hire Designers</a></li>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a onclick="showPage('features')" id="nav-features">Features</a></li>
+    <li><a onclick="showPage('tools')" id="nav-tools">Tools</a></li>
+    <li><a onclick="showPage('discover')" id="nav-discover">Discover</a></li>
+    <li><a onclick="showPage('hire')" id="nav-hire">Hire Designers</a></li>
+    <li><a onclick="showPage('earn')" id="nav-earn">Earn</a></li>
   </ul>
   <div class="nav-right">
-    <a href="#" class="btn btn-ghost">Sign in</a>
-    <a href="#" class="btn btn-primary">Get started free</a>
+    <button class="btn btn-primary" onclick="showPage('wizard')">Start for free →</button>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
-  <div class="eyebrow"><span class="eyebrow-dot"></span> AI-powered design platform</div>
-  <h1>Create, Vectorize &<br/><span>Brand Everything</span> with AI</h1>
-  <p class="hero-sub">Generate logos, build brand kits, vectorize images, remove backgrounds, and hire top designers — all in one place.</p>
-  <div class="hero-cta">
-    <a href="#" class="btn btn-primary btn-large">Start creating free →</a>
-    <a href="#" class="btn-outline-large">Explore designs</a>
-  </div>
-  <div class="hero-meta">
-    <span>✦ No credit card needed</span>
-    <span class="meta-dot"></span>
-    <span>✦ 50,000+ brands created</span>
-    <span class="meta-dot"></span>
-    <span>✦ Export SVG, PNG, PDF</span>
-  </div>
-</section>
+<!-- ════════════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
 
-<!-- STATS -->
-<div class="stats-row">
-  <div class="stat"><span class="stat-num">50K+</span><span class="stat-label">Brands created</span></div>
-  <div class="stat"><span class="stat-num">1.2M</span><span class="stat-label">Designs generated</span></div>
-  <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Satisfaction rate</span></div>
-  <div class="stat"><span class="stat-num">340+</span><span class="stat-label">Professional designers</span></div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="eyebrow"><span class="eyebrow-dot"></span> Free AI design platform</div>
+    <h1>Turn ideas into<br/><span>brands that stand out</span></h1>
+    <p class="hero-sub">Generate logos, build brand kits, vectorize images, remove backgrounds — powerful AI tools, completely free to start.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary btn-large" onclick="showPage('wizard')">Create your brand free →</button>
+      <button class="btn-outline-large" onclick="showPage('discover')">Browse designs</button>
+    </div>
+    <div class="hero-meta">
+      <span>✦ No account required</span>
+      <span class="meta-dot"></span>
+      <span>✦ 50,000+ brands created</span>
+      <span class="meta-dot"></span>
+      <span>✦ SVG, PNG, PDF export</span>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">50K+</span><span class="stat-label">Brands created</span></div>
+    <div class="stat"><span class="stat-num">1.2M</span><span class="stat-label">Designs generated</span></div>
+    <div class="stat"><span class="stat-num">8</span><span class="stat-label">Free tools</span></div>
+    <div class="stat"><span class="stat-num">340+</span><span class="stat-label">Pro designers</span></div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">What you can do</div>
+      <h2>One platform, every creative need</h2>
+      <p>From first logo sketch to a full brand system, Vectify covers every step.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" onclick="showPage('industry')">
+        <div class="feature-icon">🏭</div>
+        <h3>Industry Logo Ideas</h3>
+        <p>Browse logo generators and visual examples organized by business category — coffee, tech, fashion, and more.</p>
+        <div class="feature-arrow">Explore by industry <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('prompts')">
+        <div class="feature-icon">✨</div>
+        <h3>Logo Prompt Generator</h3>
+        <p>Craft AI-ready prompts tailored to your visual style, color preferences, and brand personality in seconds.</p>
+        <div class="feature-arrow">Generate prompts <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('wizard')">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Brand &amp; Logo Creator <span class="badge">Free</span></h3>
+        <p>Generate professional logos, color palettes, typography, and brand guidelines with one guided flow.</p>
+        <div class="feature-arrow">Start building <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('bg-remover')">
+        <div class="feature-icon">🪄</div>
+        <h3>Background Remover</h3>
+        <p>Remove image backgrounds instantly with AI. Clean cutouts in one click, every time.</p>
+        <div class="feature-arrow">Remove a background <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('vectorizer')">
+        <div class="feature-icon">🔷</div>
+        <h3>Image to Vector</h3>
+        <p>Convert any PNG or JPG into a crisp, scalable SVG. Perfect for print, embroidery, or web.</p>
+        <div class="feature-arrow">Vectorize an image <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('discover')">
+        <div class="feature-icon">🌐</div>
+        <h3>Discover Designs</h3>
+        <p>Browse AI-generated logos and brand concepts from the Vectify community for daily inspiration.</p>
+        <div class="feature-arrow">Open the gallery <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('hire')">
+        <div class="feature-icon">📦</div>
+        <h3>Hire a Designer</h3>
+        <p>Work with vetted professional designers for premium branding, mockups, and full identity packages.</p>
+        <div class="feature-arrow">Browse designers <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('earn')">
+        <div class="feature-icon">💰</div>
+        <h3>Earn as a Creator</h3>
+        <p>List your design templates and brand assets on the Vectify marketplace and earn every time someone downloads.</p>
+        <div class="feature-arrow">Start selling <span>→</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- QUICK TOOLS -->
+  <section class="section" id="quick-tools">
+    <div class="section-header">
+      <div class="section-label">Quick tools</div>
+      <h2>Fast tools, zero friction</h2>
+      <p>Everyday creative tasks done in seconds — no account, no waiting.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-pill" onclick="showPage('bg-remover')">
+        <span class="tool-pill-icon">🖼️</span>
+        <div><div class="tool-pill-text">Background Remover</div><div class="tool-pill-desc">Remove BG in one click</div></div>
+      </div>
+      <div class="tool-pill" onclick="showPage('vectorizer')">
+        <span class="tool-pill-icon">📐</span>
+        <div><div class="tool-pill-text">Image to SVG</div><div class="tool-pill-desc">PNG/JPG → clean vector</div></div>
+      </div>
+      <div class="tool-pill" onclick="showPage('palette')">
+        <span class="tool-pill-icon">🎨</span>
+        <div><div class="tool-pill-text">Palette Generator</div><div class="tool-pill-desc">AI-matched brand colors</div></div>
+      </div>
+      <div class="tool-pill" onclick="showPage('fonts')">
+        <span class="tool-pill-icon">🔤</span>
+        <div><div class="tool-pill-text">Font Pairer</div><div class="tool-pill-desc">Display + body combos</div></div>
+      </div>
+      <div class="tool-pill" onclick="showPage('mockup')">
+        <span class="tool-pill-icon">📱</span>
+        <div><div class="tool-pill-text">Mockup Studio</div><div class="tool-pill-desc">Place on devices & merch</div></div>
+      </div>
+      <div class="tool-pill" onclick="showPage('wizard')">
+        <span class="tool-pill-icon">✂️</span>
+        <div><div class="tool-pill-text">Logo Wizard</div><div class="tool-pill-desc">Full AI brand in minutes</div></div>
+      </div>
+      <div class="tool-pill" onclick="showPage('wizard')">
+        <span class="tool-pill-icon">📄</span>
+        <div><div class="tool-pill-text">Brand Kit Export</div><div class="tool-pill-desc">PDF + ZIP bundle</div></div>
+      </div>
+      <div class="tool-pill" onclick="showPage('prompts')">
+        <span class="tool-pill-icon">🔍</span>
+        <div><div class="tool-pill-text">Prompt Generator</div><div class="tool-pill-desc">AI logo prompt builder</div></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">How it works</div>
+      <h2>Brand-ready in minutes</h2>
+      <p>Four simple steps from blank canvas to a complete visual identity.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Describe your brand</h4>
+        <p>Enter your business name, industry, and style direction. The more context you give, the sharper the output.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Generate with AI</h4>
+        <p>Vectify produces multiple logo concepts, a color palette, font pairings, and brand guidelines in seconds.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Refine and download</h4>
+        <p>Tweak colors, fonts, and layouts to your taste, then export print-ready SVG, PNG, and PDF files.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Launch your brand</h4>
+        <p>Apply your brand kit across social media, packaging, websites, and merch with complete consistency.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">Loved by creators</div>
+      <h2>Trusted by founders and designers</h2>
+      <p>Real outcomes from people who built brands with Vectify.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I launched my coffee shop brand in an afternoon. The AI logo was so sharp my designer friends thought I'd paid an agency. Completely free and genuinely impressive."</p>
+        <div class="testimonial-author">
+          <div class="avatar av-a">SR</div>
+          <div><div class="author-name">Sofia Rivera</div><div class="author-role">Founder, Roast &amp; Co.</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The vectorizer alone saves me hours every week. I processed 200 client assets in a single day. The SVG quality is cleaner than most paid tools I've used."</p>
+        <div class="testimonial-author">
+          <div class="avatar av-b">JM</div>
+          <div><div class="author-name">James Mwenda</div><div class="author-role">Freelance Brand Designer</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"We needed a full rebrand fast. Vectify generated 10 directions in minutes, then we hired a pro through the platform to polish the winner. Perfect workflow."</p>
+        <div class="testimonial-author">
+          <div class="avatar av-c">AL</div>
+          <div><div class="author-name">Aisha Lindqvist</div><div class="author-role">Head of Marketing, Nura SaaS</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h2>Build your brand today — free</h2>
+    <p>No account, no credit card, no waiting. Just great design tools that work.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary btn-large" onclick="showPage('wizard')">Create your brand →</button>
+      <button class="btn-outline-large" onclick="showPage('hire')">Talk to a designer</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">V</div>
+          Vectify<span style="color:var(--accent2)">.io</span>
+        </div>
+        <p>AI-powered brand creation, vectorization tools, and a marketplace of top creative talent.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Create</h5>
+        <ul>
+          <li><a onclick="showPage('wizard')">AI Logo Creator</a></li>
+          <li><a onclick="showPage('wizard')">Brand Kit Builder</a></li>
+          <li><a onclick="showPage('prompts')">Logo Prompts</a></li>
+          <li><a onclick="showPage('industry')">Industry Ideas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Tools</h5>
+        <ul>
+          <li><a onclick="showPage('vectorizer')">Image to Vector</a></li>
+          <li><a onclick="showPage('bg-remover')">Background Remover</a></li>
+          <li><a onclick="showPage('mockup')">Mockup Studio</a></li>
+          <li><a onclick="showPage('palette')">Palette Generator</a></li>
+          <li><a onclick="showPage('fonts')">Font Pairer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a onclick="showPage('discover')">Discover</a></li>
+          <li><a onclick="showPage('hire')">Hire Designers</a></li>
+          <li><a onclick="showPage('earn')">Earn &amp; Sell</a></li>
+          <li><a onclick="showPage('home')">About Vectify</a></li>
+          <li><a onclick="showPage('home')">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Vectify.io · All rights reserved</span>
+      <div class="footer-socials">
+        <a>Twitter</a><a>Instagram</a><a>LinkedIn</a><a>Dribbble</a>
+      </div>
+    </div>
+  </footer>
+</div><!-- end home -->
+
+
+<!-- ════════════════════════════════════════════
+     TOOLS HUB PAGE
+════════════════════════════════════════════ -->
+<div class="page" id="page-tools">
+  <div class="tool-page" style="max-width:1000px">
+    <button class="back-btn" onclick="showPage('home')">← Back to home</button>
+    <div class="tool-page-header">
+      <div class="section-label">All tools</div>
+      <h1>Creative tools, free forever</h1>
+      <p>Pick a tool and start creating. No account required for any of them.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" onclick="showPage('bg-remover')">
+        <div class="feature-icon">🖼️</div>
+        <h3>Background Remover</h3>
+        <p>Upload any image and get a clean transparent PNG cutout in under 3 seconds.</p>
+        <div class="feature-arrow">Open tool <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('vectorizer')">
+        <div class="feature-icon">📐</div>
+        <h3>Image to SVG</h3>
+        <p>Convert raster images to clean, scalable vector files ready for print or web.</p>
+        <div class="feature-arrow">Open tool <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('palette')">
+        <div class="feature-icon">🎨</div>
+        <h3>Palette Generator</h3>
+        <p>Generate AI-matched brand color palettes from a keyword, mood, or hex color.</p>
+        <div class="feature-arrow">Open tool <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('fonts')">
+        <div class="feature-icon">🔤</div>
+        <h3>Font Pairer</h3>
+        <p>Find display and body font combinations that work beautifully together.</p>
+        <div class="feature-arrow">Open tool <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('mockup')">
+        <div class="feature-icon">📱</div>
+        <h3>Mockup Studio</h3>
+        <p>Place your logo or design on phones, t-shirts, packaging, and more.</p>
+        <div class="feature-arrow">Open tool <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('prompts')">
+        <div class="feature-icon">🔍</div>
+        <h3>Logo Prompt Generator</h3>
+        <p>Build detailed AI prompts for any logo style, industry, and color direction.</p>
+        <div class="feature-arrow">Open tool <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('wizard')">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Brand Wizard</h3>
+        <p>Full logo + brand kit generator. Answer five questions, get a complete identity.</p>
+        <div class="feature-arrow">Open tool <span>→</span></div>
+      </div>
+      <div class="feature-card" onclick="showPage('industry')">
+        <div class="feature-icon">🏭</div>
+        <h3>Industry Ideas</h3>
+        <p>Browse ready-made logo concepts organized by business type and aesthetic.</p>
+        <div class="feature-arrow">Open tool <span>→</span></div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<hr class="divider" />
 
-<!-- FEATURES -->
-<section class="section" id="features">
-  <div class="section-header">
-    <div class="section-label">What you can do</div>
-    <h2>Everything your brand needs</h2>
-    <p>From first concept to full identity system, Vectify.io covers every creative step.</p>
-  </div>
-  <div class="features-grid">
-
-    <a href="#" class="feature-card">
-      <div class="feature-icon">🏭</div>
-      <h3>Industry Logo Ideas</h3>
-      <p>Browse curated logo generators and visual examples organized by business category and niche.</p>
-      <div class="feature-arrow">Explore ideas <span>→</span></div>
-    </a>
-
-    <a href="#" class="feature-card">
-      <div class="feature-icon">✨</div>
-      <h3>Logo Prompt Generator</h3>
-      <p>Craft precise AI logo prompts tailored to your visual style, colors, and brand personality.</p>
-      <div class="feature-arrow">Generate prompts <span>→</span></div>
-    </a>
-
-    <a href="#" class="feature-card">
-      <div class="feature-icon">🤖</div>
-      <h3>AI Brand & Logo Creator <span class="badge">New</span></h3>
-      <p>Build a full brand identity in minutes — logos, color palettes, typography, and brand guidelines.</p>
-      <div class="feature-arrow">Start building <span>→</span></div>
-    </a>
-
-    <a href="#" class="feature-card">
-      <div class="feature-icon">🪄</div>
-      <h3>Background Remover</h3>
-      <p>Instantly erase image backgrounds with AI precision. One click, professional results every time.</p>
-      <div class="feature-arrow">Remove backgrounds <span>→</span></div>
-    </a>
-
-    <a href="#" class="feature-card">
-      <div class="feature-icon">🔷</div>
-      <h3>Image to Vector</h3>
-      <p>Convert any PNG or JPG to a clean, scalable SVG file. Perfect for print, web, or embroidery.</p>
-      <div class="feature-arrow">Vectorize now <span>→</span></div>
-    </a>
-
-    <a href="#" class="feature-card">
-      <div class="feature-icon">🌐</div>
-      <h3>Discover Designs</h3>
-      <p>Browse thousands of AI-generated logos and brand concepts from the Vectify community for inspiration.</p>
-      <div class="feature-arrow">Browse gallery <span>→</span></div>
-    </a>
-
-    <a href="#" class="feature-card">
-      <div class="feature-icon">📦</div>
-      <h3>Custom Packages</h3>
-      <p>Work directly with vetted professional designers for premium branding, mockups, and full identity systems.</p>
-      <div class="feature-arrow">Hire a designer <span>→</span></div>
-    </a>
-
-    <a href="#" class="feature-card">
-      <div class="feature-icon">💰</div>
-      <h3>Earn as a Creator</h3>
-      <p>Sell your design templates and brand assets on the Vectify marketplace and earn passive income.</p>
-      <div class="feature-arrow">Start earning <span>→</span></div>
-    </a>
-
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- TOOLS -->
-<section class="tools-section" id="tools">
-  <div class="section-header">
-    <div class="section-label">Quick tools</div>
-    <h2>Instant creative tools</h2>
-    <p>Fast, free tools to power up your creative workflow every day.</p>
-  </div>
-  <div class="tools-grid">
-
-    <a href="#" class="tool-pill">
-      <span class="tool-pill-icon">🖼️</span>
-      <div>
-        <div class="tool-pill-text">Background Remover</div>
-        <div class="tool-pill-desc">Remove BG in seconds</div>
-      </div>
-    </a>
-
-    <a href="#" class="tool-pill">
-      <span class="tool-pill-icon">📐</span>
-      <div>
-        <div class="tool-pill-text">Image to SVG</div>
-        <div class="tool-pill-desc">PNG/JPG → vector</div>
-      </div>
-    </a>
-
-    <a href="#" class="tool-pill">
-      <span class="tool-pill-icon">🎨</span>
-      <div>
-        <div class="tool-pill-text">Palette Generator</div>
-        <div class="tool-pill-desc">AI brand colors</div>
-      </div>
-    </a>
-
-    <a href="#" class="tool-pill">
-      <span class="tool-pill-icon">🔤</span>
-      <div>
-        <div class="tool-pill-text">Font Pairer</div>
-        <div class="tool-pill-desc">Match display + body</div>
-      </div>
-    </a>
-
-    <a href="#" class="tool-pill">
-      <span class="tool-pill-icon">📱</span>
-      <div>
-        <div class="tool-pill-text">Mockup Studio</div>
-        <div class="tool-pill-desc">Place on devices/merch</div>
-      </div>
-    </a>
-
-    <a href="#" class="tool-pill">
-      <span class="tool-pill-icon">✂️</span>
-      <div>
-        <div class="tool-pill-text">Image Cropper</div>
-        <div class="tool-pill-desc">Pixel-perfect crop</div>
-      </div>
-    </a>
-
-    <a href="#" class="tool-pill">
-      <span class="tool-pill-icon">📄</span>
-      <div>
-        <div class="tool-pill-text">Brand Kit Export</div>
-        <div class="tool-pill-desc">PDF + ZIP bundle</div>
-      </div>
-    </a>
-
-    <a href="#" class="tool-pill">
-      <span class="tool-pill-icon">🔍</span>
-      <div>
-        <div class="tool-pill-text">Prompt Generator</div>
-        <div class="tool-pill-desc">AI logo prompts</div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- HOW IT WORKS -->
-<section class="how-section" id="how">
-  <div class="section-header">
-    <div class="section-label">How it works</div>
-    <h2>Brand-ready in three steps</h2>
-    <p>Go from idea to full brand identity in under five minutes.</p>
-  </div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h4>Describe your brand</h4>
-      <p>Tell Vectify your business name, industry, style preferences, and target audience. The more detail, the better the result.</p>
+<!-- ════════════════════════════════════════════
+     BACKGROUND REMOVER
+════════════════════════════════════════════ -->
+<div class="page" id="page-bg-remover">
+  <div class="tool-page">
+    <button class="back-btn" onclick="showPage('tools')">← Back to tools</button>
+    <div class="tool-page-header">
+      <div class="section-label">Free tool</div>
+      <h1>🖼️ Background Remover</h1>
+      <p>Upload any image and get a clean transparent cutout instantly. Works on photos, logos, and illustrations.</p>
     </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h4>Generate with AI</h4>
-      <p>Our AI produces unique logo concepts, color palettes, typography pairings, and a complete brand identity system.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h4>Refine & download</h4>
-      <p>Customize every element to your taste, then export print-ready SVG, PNG, and PDF files — or hand off to a pro designer.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <h4>Launch your brand</h4>
-      <p>Use your new brand kit across social media, packaging, websites, and merchandise with consistent visual identity.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- TESTIMONIALS -->
-<section class="testimonials" id="discover">
-  <div class="section-header">
-    <div class="section-label">Loved by creators</div>
-    <h2>Trusted by founders & designers</h2>
-    <p>Real results from real people who built brands with Vectify.</p>
-  </div>
-  <div class="testimonials-grid">
-
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">"I launched my coffee shop brand in an afternoon. The AI logo was so good my graphic designer friends thought I'd hired an agency. Absolutely blown away."</p>
-      <div class="testimonial-author">
-        <div class="avatar avatar-a">SR</div>
-        <div>
-          <div class="author-name">Sofia Rivera</div>
-          <div class="author-role">Founder, Roast & Co.</div>
+    <div class="tool-card">
+      <div class="upload-zone" id="bgUploadZone" onclick="triggerUpload('bgFile')">
+        <input type="file" id="bgFile" accept="image/*" onchange="handleBgUpload(event)" style="display:none"/>
+        <div class="upload-icon">🖼️</div>
+        <h4>Drop your image here</h4>
+        <p>or click to browse from your device</p>
+        <span class="formats">JPG · PNG · WEBP · up to 20MB</span>
+      </div>
+      <div class="processing" id="bgProcessing">
+        <div class="spinner"></div>
+        <span>Removing background...</span>
+      </div>
+      <div class="result-area" id="bgResult">
+        <div class="result-box">
+          <div id="bgPreview" style="margin-bottom:16px;"></div>
+          <p>Background removed! Your transparent PNG is ready to download.</p>
+          <button class="btn btn-primary" onclick="showToast('✅ PNG downloaded successfully!')">Download PNG</button>
+          <button class="btn btn-outline" style="margin-left:8px" onclick="resetTool('bgResult','bgProcessing','bgUploadZone')">Process another</button>
         </div>
       </div>
     </div>
-
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">"The vectorization tool alone is worth the subscription. I converted 200 client assets in a day. The SVG output quality is cleaner than most paid converters."</p>
-      <div class="testimonial-author">
-        <div class="avatar avatar-b">JM</div>
-        <div>
-          <div class="author-name">James Mwenda</div>
-          <div class="author-role">Freelance Brand Designer</div>
-        </div>
-      </div>
+    <div class="tool-card" style="margin-top:0">
+      <h3>Tips for best results</h3>
+      <p style="color:var(--text2);font-size:0.88rem;line-height:1.7">
+        • Use high-contrast images where the subject is clearly separated from the background.<br/>
+        • Photos with busy backgrounds still work — the AI handles complex edges like hair and fur.<br/>
+        • For logos, PNG with a white or solid background gives the cleanest cutout.
+      </p>
     </div>
-
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">"We needed a full rebrand fast. Vectify gave us 12 logo directions in minutes, then we hired a pro through the platform to refine the winner. Dream workflow."</p>
-      <div class="testimonial-author">
-        <div class="avatar avatar-c">AL</div>
-        <div>
-          <div class="author-name">Aisha Lindqvist</div>
-          <div class="author-role">Head of Marketing, Nura SaaS</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CTA BANNER -->
-<div class="cta-banner" id="hire">
-  <h2>Ready to build your brand?</h2>
-  <p>Join 50,000+ founders and designers creating standout identities with Vectify.io.</p>
-  <div class="hero-cta">
-    <a href="#" class="btn btn-primary btn-large">Create your brand free →</a>
-    <a href="#" class="btn-outline-large">Talk to a designer</a>
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#" class="logo">
-        <div class="logo-mark">V</div>
-        Vectify<span style="color:var(--accent2)">.io</span>
-      </a>
-      <p>AI-powered brand creation, vectorization tools, and a marketplace for top creative talent.</p>
-    </div>
-    <div class="footer-col">
-      <h5>Create</h5>
-      <ul>
-        <li><a href="#">AI Logo Creator</a></li>
-        <li><a href="#">Brand Kit Builder</a></li>
-        <li><a href="#">Logo Prompts</a></li>
-        <li><a href="#">Industry Ideas</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Tools</h5>
-      <ul>
-        <li><a href="#">Image to Vector</a></li>
-        <li><a href="#">Background Remover</a></li>
-        <li><a href="#">Mockup Studio</a></li>
-        <li><a href="#">Palette Generator</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Company</h5>
-      <ul>
-        <li><a href="#">About us</a></li>
-        <li><a href="#">Discover</a></li>
-        <li><a href="#">Hire Designers</a></li>
-        <li><a href="#">Earn & Sell</a></li>
-        <li><a href="#">Privacy policy</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 Vectify.io · All rights reserved</span>
-    <div class="footer-socials">
-      <a href="#">Twitter</a>
-      <a href="#">Instagram</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Dribbble</a>
-    </div>
-  </div>
-</footer>
 
+<!-- ════════════════════════════════════════════
+     VECTORIZER
+════════════════════════════════════════════ -->
+<div class="page" id="page-vectorizer">
+  <div class="tool-page">
+    <button class="back-btn" onclick="showPage('tools')">← Back to tools</button>
+    <div class="tool-page-header">
+      <div class="section-label">Free tool</div>
+      <h1>📐 Image to Vector</h1>
+      <p>Convert any PNG or JPG to a crisp, scalable SVG file — perfect for print, laser cutting, embroidery, and web.</p>
+    </div>
+    <div class="tool-card">
+      <div class="field">
+        <label>Vectorization mode</label>
+        <div class="tabs">
+          <button class="tab-btn active" onclick="setTab(this,'vec')">Auto detect</button>
+          <button class="tab-btn" onclick="setTab(this,'vec')">Logo / icon</button>
+          <button class="tab-btn" onclick="setTab(this,'vec')">Photo</button>
+          <button class="tab-btn" onclick="setTab(this,'vec')">Sketch</button>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Color depth</label>
+          <select><option>Full color</option><option>2 colors (mono)</option><option>4 colors</option><option>8 colors</option></select>
+        </div>
+        <div class="field">
+          <label>Detail level</label>
+          <select><option>High (recommended)</option><option>Medium</option><option>Low (fast)</option></select>
+        </div>
+      </div>
+      <div class="upload-zone" onclick="triggerUpload('vecFile')">
+        <input type="file" id="vecFile" accept="image/*" onchange="handleVecUpload(event)" style="display:none"/>
+        <div class="upload-icon">📐</div>
+        <h4>Drop your image here</h4>
+        <p>or click to browse</p>
+        <span class="formats">JPG · PNG · BMP · GIF · up to 10MB</span>
+      </div>
+      <div class="processing" id="vecProcessing">
+        <div class="spinner"></div>
+        <span>Tracing paths...</span>
+      </div>
+      <div class="result-area" id="vecResult">
+        <div class="result-box">
+          <div style="font-size:3rem;margin-bottom:12px">🔷</div>
+          <p>Vector conversion complete. Your SVG file is scalable to any size without quality loss.</p>
+          <button class="btn btn-primary" onclick="showToast('✅ SVG downloaded!')">Download SVG</button>
+          <button class="btn btn-outline" style="margin-left:8px" onclick="showToast('✅ PNG downloaded!')">Download PNG</button>
+          <button class="btn btn-outline" style="margin-left:8px;margin-top:8px" onclick="resetTool('vecResult','vecProcessing',null)">Convert another</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PALETTE GENERATOR
+════════════════════════════════════════════ -->
+<div class="page" id="page-palette">
+  <div class="tool-page">
+    <button class="back-btn" onclick="showPage('tools')">← Back to tools</button>
+    <div class="tool-page-header">
+      <div class="section-label">Free tool</div>
+      <h1>🎨 Palette Generator</h1>
+      <p>Generate beautiful, brand-ready color palettes from a keyword, mood, or hex color.</p>
+    </div>
+    <div class="tool-card">
+      <div class="field-row">
+        <div class="field">
+          <label>Describe your brand or mood</label>
+          <input type="text" id="paletteKeyword" placeholder="e.g. calm ocean, bold tech startup, earthy bakery..." />
+        </div>
+        <div class="field">
+          <label>Style</label>
+          <select id="paletteStyle">
+            <option>Modern & minimal</option>
+            <option>Warm & earthy</option>
+            <option>Bold & vibrant</option>
+            <option>Dark & luxurious</option>
+            <option>Pastel & soft</option>
+            <option>Neon & electric</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="generatePalette()" style="width:100%;padding:13px;font-size:0.95rem">Generate palette →</button>
+      <div id="paletteOutput" style="display:none;margin-top:24px">
+        <p style="font-size:0.83rem;color:var(--text3);margin-bottom:12px">Click any swatch to copy the hex code.</p>
+        <div class="palette-row" id="paletteSwatches"></div>
+        <div id="paletteNames" style="display:flex;gap:8px;margin-top:8px;"></div>
+        <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="generatePalette()">Regenerate</button>
+          <button class="btn btn-outline" onclick="showToast('✅ Palette exported as PNG!')">Export PNG</button>
+          <button class="btn btn-outline" onclick="showToast('✅ CSS variables copied!')">Copy CSS vars</button>
+        </div>
+      </div>
+    </div>
+    <div class="tool-card" style="margin-top:0">
+      <h3>Saved palettes</h3>
+      <p style="color:var(--text3);font-size:0.86rem">Generate a palette above and it will appear here for easy reference.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     FONT PAIRER
+════════════════════════════════════════════ -->
+<div class="page" id="page-fonts">
+  <div class="tool-page">
+    <button class="back-btn" onclick="showPage('tools')">← Back to tools</button>
+    <div class="tool-page-header">
+      <div class="section-label">Free tool</div>
+      <h1>🔤 Font Pairer</h1>
+      <p>Find display and body font combinations that work. See them live with your own text.</p>
+    </div>
+    <div class="tool-card">
+      <div class="field-row">
+        <div class="field">
+          <label>Brand personality</label>
+          <select id="fontPersonality" onchange="generateFonts()">
+            <option>Modern tech</option>
+            <option>Luxury &amp; editorial</option>
+            <option>Friendly &amp; approachable</option>
+            <option>Bold &amp; energetic</option>
+            <option>Classic &amp; trustworthy</option>
+            <option>Creative &amp; playful</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Preview text</label>
+          <input type="text" id="fontPreviewText" value="Vectify Studio" oninput="updateFontPreviews()" />
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="generateFonts()" style="margin-bottom:20px">Generate pairings →</button>
+      <div id="fontPairsOutput"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     MOCKUP STUDIO
+════════════════════════════════════════════ -->
+<div class="page" id="page-mockup">
+  <div class="tool-page">
+    <button class="back-btn" onclick="showPage('tools')">← Back to tools</button>
+    <div class="tool-page-header">
+      <div class="section-label">Free tool</div>
+      <h1>📱 Mockup Studio</h1>
+      <p>Place your logo or design on realistic device and product mockups in one click.</p>
+    </div>
+    <div class="tool-card">
+      <h3>1 · Upload your design</h3>
+      <div class="upload-zone" onclick="triggerUpload('mockupFile')">
+        <input type="file" id="mockupFile" accept="image/*" onchange="handleMockupUpload(event)" style="display:none"/>
+        <div class="upload-icon">📱</div>
+        <h4>Drop your logo or design</h4>
+        <p>PNG with transparent background works best</p>
+        <span class="formats">PNG · SVG · JPG</span>
+      </div>
+    </div>
+    <div class="tool-card" style="margin-top:0" id="mockupStep2" style="display:none">
+      <h3>2 · Choose a mockup template</h3>
+      <div class="discover-grid" id="mockupGrid"></div>
+    </div>
+    <div class="result-area" id="mockupResult">
+      <div class="result-box">
+        <div style="font-size:3rem;margin-bottom:12px">🎉</div>
+        <p>Your mockup is ready! Download it as a high-resolution PNG.</p>
+        <button class="btn btn-primary" onclick="showToast('✅ Mockup downloaded at 2x resolution!')">Download 2× PNG</button>
+        <button class="btn btn-outline" style="margin-left:8px" onclick="resetTool('mockupResult',null,null)">Try another template</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     LOGO PROMPT GENERATOR
+════════════════════════════════════════════ -->
+<div class="page" id="page-prompts">
+  <div class="tool-page">
+    <button class="back-btn" onclick="showPage('tools')">← Back to tools</button>
+    <div class="tool-page-header">
+      <div class="section-label">Free tool</div>
+      <h1>✨ Logo Prompt Generator</h1>
+      <p>Build AI-ready prompts that get you professional logo results from any image generator.</p>
+    </div>
+    <div class="tool-card">
+      <div class="field-row">
+        <div class="field">
+          <label>Business name</label>
+          <input type="text" id="pBrand" placeholder="e.g. Roast &amp; Co." />
+        </div>
+        <div class="field">
+          <label>Industry</label>
+          <select id="pIndustry">
+            <option>Coffee &amp; café</option><option>Technology</option><option>Fashion</option>
+            <option>Food &amp; restaurant</option><option>Health &amp; wellness</option>
+            <option>Finance</option><option>Creative agency</option><option>Real estate</option>
+            <option>Education</option><option>Fitness</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Visual style</label>
+          <select id="pStyle">
+            <option>Minimal &amp; geometric</option><option>Vintage &amp; retro</option>
+            <option>Bold &amp; modern</option><option>Elegant &amp; luxury</option>
+            <option>Playful &amp; hand-drawn</option><option>Tech &amp; futuristic</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Color direction</label>
+          <select id="pColor">
+            <option>Deep navy &amp; gold</option><option>Black &amp; white</option>
+            <option>Earth tones</option><option>Vibrant &amp; colorful</option>
+            <option>Pastel</option><option>Monochrome</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Key concept or symbol (optional)</label>
+        <input type="text" id="pConcept" placeholder="e.g. mountain peak, coffee bean, lightning bolt..." />
+      </div>
+      <button class="btn btn-primary" onclick="generatePrompt()" style="width:100%;padding:13px;font-size:0.95rem">Generate prompt →</button>
+      <div id="promptOutput" class="prompt-output" style="display:none;margin-top:20px">
+        <button class="copy-btn" onclick="copyPrompt()">Copy</button>
+        <span id="promptText"></span>
+      </div>
+      <div id="promptVariants" style="display:none;margin-top:14px">
+        <p style="font-size:0.82rem;color:var(--text3);margin-bottom:10px">More variations:</p>
+        <div id="variantList"></div>
+        <button class="btn btn-outline" onclick="generatePrompt()" style="margin-top:12px">Generate new batch</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     AI BRAND WIZARD
+════════════════════════════════════════════ -->
+<div class="page" id="page-wizard">
+  <div class="tool-page">
+    <button class="back-btn" onclick="showPage('home')">← Back to home</button>
+    <div class="tool-page-header">
+      <div class="section-label">Free · No account needed</div>
+      <h1>🤖 AI Brand &amp; Logo Creator</h1>
+      <p>Answer five quick questions and get a complete brand identity: logo, colors, fonts, and guidelines.</p>
+    </div>
+    <div class="tool-card" id="wizardForm">
+      <h3>Tell us about your brand</h3>
+      <div class="field">
+        <label>Business name</label>
+        <input type="text" id="wName" placeholder="e.g. Vectify Studio" />
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Industry</label>
+          <select id="wIndustry">
+            <option>Technology / SaaS</option><option>Coffee &amp; café</option>
+            <option>Fashion &amp; apparel</option><option>Food &amp; restaurant</option>
+            <option>Health &amp; wellness</option><option>Finance &amp; fintech</option>
+            <option>Creative agency</option><option>Real estate</option>
+            <option>Education</option><option>Fitness &amp; sport</option>
+            <option>Retail &amp; e-commerce</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Brand personality</label>
+          <select id="wPersonality">
+            <option>Professional &amp; trustworthy</option><option>Bold &amp; energetic</option>
+            <option>Elegant &amp; luxurious</option><option>Friendly &amp; approachable</option>
+            <option>Creative &amp; innovative</option><option>Minimal &amp; clean</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Target audience</label>
+        <input type="text" id="wAudience" placeholder="e.g. young professionals aged 25–35, small business owners..." />
+      </div>
+      <div class="field">
+        <label>Describe your brand in one sentence</label>
+        <textarea id="wDesc" placeholder="e.g. A specialty coffee shop focused on single-origin beans and slow brewing methods."></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="runWizard()" style="width:100%;padding:14px;font-size:1rem;margin-top:4px">Generate my brand →</button>
+    </div>
+    <div class="processing" id="wizardProcessing">
+      <div class="spinner"></div>
+      <span id="wizardStatus">Generating logo concepts...</span>
+    </div>
+    <div id="wizardResult" style="display:none">
+      <div class="tool-card">
+        <h3>Your logo options — pick your favourite</h3>
+        <div class="logo-grid" id="logoGrid"></div>
+      </div>
+      <div class="tool-card" style="margin-top:0">
+        <h3>Brand kit</h3>
+        <div class="brand-kit" id="brandKit"></div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px">
+        <button class="btn btn-primary btn-large" onclick="showToast('✅ Brand kit downloaded as ZIP!')">Download brand kit</button>
+        <button class="btn btn-outline" style="padding:13px 24px;font-size:1rem" onclick="showToast('✅ PDF exported!')">Export PDF guide</button>
+        <button class="btn btn-outline" style="padding:13px 24px;font-size:1rem" onclick="showPage('hire')">Hire a designer to refine →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     INDUSTRY IDEAS
+════════════════════════════════════════════ -->
+<div class="page" id="page-industry">
+  <div class="tool-page" style="max-width:1000px">
+    <button class="back-btn" onclick="showPage('home')">← Back to home</button>
+    <div class="tool-page-header">
+      <div class="section-label">Inspiration</div>
+      <h1>🏭 Industry Logo Ideas</h1>
+      <p>Browse logo generators and visual examples by business category. Click any industry to generate matching concepts.</p>
+    </div>
+    <div class="industry-grid">
+      <div class="industry-tag" onclick="industryClick('Coffee &amp; café')"><span>☕</span><p>Coffee &amp; café</p></div>
+      <div class="industry-tag" onclick="industryClick('Technology')"><span>💻</span><p>Technology</p></div>
+      <div class="industry-tag" onclick="industryClick('Fashion')"><span>👗</span><p>Fashion</p></div>
+      <div class="industry-tag" onclick="industryClick('Restaurant')"><span>🍽️</span><p>Restaurant</p></div>
+      <div class="industry-tag" onclick="industryClick('Health')"><span>💊</span><p>Health</p></div>
+      <div class="industry-tag" onclick="industryClick('Finance')"><span>📈</span><p>Finance</p></div>
+      <div class="industry-tag" onclick="industryClick('Real estate')"><span>🏠</span><p>Real estate</p></div>
+      <div class="industry-tag" onclick="industryClick('Fitness')"><span>🏋️</span><p>Fitness</p></div>
+      <div class="industry-tag" onclick="industryClick('Education')"><span>📚</span><p>Education</p></div>
+      <div class="industry-tag" onclick="industryClick('Creative agency')"><span>🎨</span><p>Creative agency</p></div>
+      <div class="industry-tag" onclick="industryClick('Music')"><span>🎵</span><p>Music</p></div>
+      <div class="industry-tag" onclick="industryClick('Photography')"><span>📷</span><p>Photography</p></div>
+      <div class="industry-tag" onclick="industryClick('Legal')"><span>⚖️</span><p>Legal</p></div>
+      <div class="industry-tag" onclick="industryClick('Travel')"><span>✈️</span><p>Travel</p></div>
+      <div class="industry-tag" onclick="industryClick('Beauty')"><span>💄</span><p>Beauty</p></div>
+      <div class="industry-tag" onclick="industryClick('Sports')"><span>⚽</span><p>Sports</p></div>
+      <div class="industry-tag" onclick="industryClick('Pet care')"><span>🐾</span><p>Pet care</p></div>
+      <div class="industry-tag" onclick="industryClick('Architecture')"><span>🏗️</span><p>Architecture</p></div>
+    </div>
+    <div id="industryResult" style="display:none;margin-top:36px">
+      <div class="tool-card">
+        <h3 id="industryResultTitle"></h3>
+        <div class="logo-grid" id="industryLogoGrid"></div>
+        <div style="margin-top:20px;display:flex;gap:10px">
+          <button class="btn btn-primary" onclick="showPage('wizard')">Create my own logo →</button>
+          <button class="btn btn-outline" onclick="showToast('🔄 New concepts generated!')">Regenerate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     DISCOVER
+════════════════════════════════════════════ -->
+<div class="page" id="page-discover">
+  <div class="tool-page" style="max-width:1100px">
+    <button class="back-btn" onclick="showPage('home')">← Back to home</button>
+    <div class="tool-page-header">
+      <div class="section-label">Community</div>
+      <h1>🌐 Discover Designs</h1>
+      <p>Browse AI-generated logos and brand identities from the Vectify community.</p>
+    </div>
+    <div style="display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap">
+      <button class="tab-btn active" onclick="setTab(this,'disc')">All</button>
+      <button class="tab-btn" onclick="setTab(this,'disc')">Logos</button>
+      <button class="tab-btn" onclick="setTab(this,'disc')">Brand kits</button>
+      <button class="tab-btn" onclick="setTab(this,'disc')">Minimal</button>
+      <button class="tab-btn" onclick="setTab(this,'disc')">Bold</button>
+      <button class="tab-btn" onclick="setTab(this,'disc')">Vintage</button>
+    </div>
+    <div class="discover-grid" id="discoverGrid"></div>
+    <div style="text-align:center;margin-top:36px">
+      <button class="btn btn-outline" style="padding:12px 32px;font-size:0.9rem" onclick="loadMoreDiscover()">Load more designs</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     HIRE DESIGNERS
+════════════════════════════════════════════ -->
+<div class="page" id="page-hire">
+  <div class="tool-page" style="max-width:1100px">
+    <button class="back-btn" onclick="showPage('home')">← Back to home</button>
+    <div class="tool-page-header">
+      <div class="section-label">Professional services</div>
+      <h1>📦 Hire a Designer</h1>
+      <p>Work with vetted professionals for premium branding, mockups, and full identity systems.</p>
+    </div>
+    <div style="display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap">
+      <button class="tab-btn active" onclick="setTab(this,'hire')">All</button>
+      <button class="tab-btn" onclick="setTab(this,'hire')">Logo design</button>
+      <button class="tab-btn" onclick="setTab(this,'hire')">Brand identity</button>
+      <button class="tab-btn" onclick="setTab(this,'hire')">Illustration</button>
+      <button class="tab-btn" onclick="setTab(this,'hire')">Motion</button>
+    </div>
+    <div class="designer-grid">
+      <div class="designer-card" onclick="openHireModal('Lena Kovač')">
+        <div class="designer-top"><div class="designer-avatar d1">LK</div><div><div class="designer-name">Lena Kovač</div><div class="designer-role">Brand Identity Designer</div><div class="designer-stars">★★★★★ 4.9</div></div></div>
+        <div class="designer-tags"><span class="tag">Logo design</span><span class="tag">Brand identity</span><span class="tag">Typography</span></div>
+        <div class="designer-price">Starting from <strong>$120</strong></div>
+        <button class="hire-btn">View profile &amp; hire</button>
+      </div>
+      <div class="designer-card" onclick="openHireModal('Marcus Osei')">
+        <div class="designer-top"><div class="designer-avatar d2">MO</div><div><div class="designer-name">Marcus Osei</div><div class="designer-role">Visual Identity &amp; Motion</div><div class="designer-stars">★★★★★ 5.0</div></div></div>
+        <div class="designer-tags"><span class="tag">Motion design</span><span class="tag">Branding</span><span class="tag">UI/UX</span></div>
+        <div class="designer-price">Starting from <strong>$200</strong></div>
+        <button class="hire-btn">View profile &amp; hire</button>
+      </div>
+      <div class="designer-card" onclick="openHireModal('Priya Nair')">
+        <div class="designer-top"><div class="designer-avatar d3">PN</div><div><div class="designer-name">Priya Nair</div><div class="designer-role">Illustrator &amp; Logo Designer</div><div class="designer-stars">★★★★☆ 4.7</div></div></div>
+        <div class="designer-tags"><span class="tag">Illustration</span><span class="tag">Logo design</span><span class="tag">Icons</span></div>
+        <div class="designer-price">Starting from <strong>$85</strong></div>
+        <button class="hire-btn">View profile &amp; hire</button>
+      </div>
+      <div class="designer-card" onclick="openHireModal('Tariq Al-Rashid')">
+        <div class="designer-top"><div class="designer-avatar d4">TR</div><div><div class="designer-name">Tariq Al-Rashid</div><div class="designer-role">Brand Strategy &amp; Design</div><div class="designer-stars">★★★★★ 4.8</div></div></div>
+        <div class="designer-tags"><span class="tag">Brand strategy</span><span class="tag">Packaging</span><span class="tag">Print</span></div>
+        <div class="designer-price">Starting from <strong>$300</strong></div>
+        <button class="hire-btn">View profile &amp; hire</button>
+      </div>
+      <div class="designer-card" onclick="openHireModal('Sophie Chen')">
+        <div class="designer-top"><div class="designer-avatar d5">SC</div><div><div class="designer-name">Sophie Chen</div><div class="designer-role">Minimalist &amp; Editorial</div><div class="designer-stars">★★★★★ 4.9</div></div></div>
+        <div class="designer-tags"><span class="tag">Minimalist</span><span class="tag">Editorial</span><span class="tag">Typography</span></div>
+        <div class="designer-price">Starting from <strong>$160</strong></div>
+        <button class="hire-btn">View profile &amp; hire</button>
+      </div>
+      <div class="designer-card" onclick="openHireModal('Dev Patel')">
+        <div class="designer-top"><div class="designer-avatar d6">DP</div><div><div class="designer-name">Dev Patel</div><div class="designer-role">Startup Branding Expert</div><div class="designer-stars">★★★★☆ 4.6</div></div></div>
+        <div class="designer-tags"><span class="tag">Startup branding</span><span class="tag">Pitch decks</span><span class="tag">UI</span></div>
+        <div class="designer-price">Starting from <strong>$100</strong></div>
+        <button class="hire-btn">View profile &amp; hire</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     EARN PAGE
+════════════════════════════════════════════ -->
+<div class="page" id="page-earn">
+  <div class="tool-page">
+    <button class="back-btn" onclick="showPage('home')">← Back to home</button>
+    <div class="tool-page-header">
+      <div class="section-label">For creators</div>
+      <h1>💰 Earn as a Creator</h1>
+      <p>List your design templates and brand assets on the Vectify marketplace. Earn every time someone downloads.</p>
+    </div>
+    <div class="features-grid" style="margin-bottom:28px">
+      <div class="feature-card" style="cursor:default">
+        <div class="feature-icon">📤</div>
+        <h3>Upload your templates</h3>
+        <p>List logo templates, brand kits, icon sets, and illustration packs. We handle hosting and delivery.</p>
+      </div>
+      <div class="feature-card" style="cursor:default">
+        <div class="feature-icon">💵</div>
+        <h3>Set your price</h3>
+        <p>Choose your own price per download. Vectify takes a 20% platform fee — you keep 80% of every sale.</p>
+      </div>
+      <div class="feature-card" style="cursor:default">
+        <div class="feature-icon">📊</div>
+        <h3>Track your earnings</h3>
+        <p>Real-time dashboard showing downloads, revenue, and top-performing assets. Payouts every two weeks.</p>
+      </div>
+    </div>
+    <div class="tool-card">
+      <h3>Submit your first asset</h3>
+      <div class="field"><label>Asset name</label><input type="text" placeholder="e.g. Minimal Bakery Logo Pack" /></div>
+      <div class="field-row">
+        <div class="field"><label>Category</label><select><option>Logo template</option><option>Brand kit</option><option>Icon set</option><option>Illustration pack</option><option>Font pairing guide</option></select></div>
+        <div class="field"><label>Price (USD)</label><input type="number" placeholder="e.g. 15" min="1" /></div>
+      </div>
+      <div class="field"><label>Description</label><textarea placeholder="Describe what's included in this asset pack..."></textarea></div>
+      <div class="upload-zone" onclick="triggerUpload('earnFile')" style="margin-bottom:18px">
+        <input type="file" id="earnFile" style="display:none"/>
+        <div class="upload-icon">📦</div>
+        <h4>Upload your files</h4>
+        <p>ZIP, AI, EPS, SVG, PDF</p>
+      </div>
+      <button class="btn btn-primary" style="width:100%;padding:13px" onclick="showToast('✅ Asset submitted for review! We\'ll get back to you within 48 hours.')">Submit for review →</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     FEATURES PAGE
+════════════════════════════════════════════ -->
+<div class="page" id="page-features">
+  <div class="tool-page" style="max-width:1000px">
+    <button class="back-btn" onclick="showPage('home')">← Back to home</button>
+    <div class="tool-page-header">
+      <div class="section-label">Platform overview</div>
+      <h1>Everything Vectify can do</h1>
+      <p>A complete creative suite — from AI generation to professional design services, all in one place.</p>
+    </div>
+    <div class="steps" style="margin-bottom:48px">
+      <div class="step"><div class="step-num">01</div><h4>AI logo generation</h4><p>Describe your brand and get multiple logo concepts in seconds, complete with color and font suggestions.</p></div>
+      <div class="step"><div class="step-num">02</div><h4>Vectorization tools</h4><p>Convert any bitmap image to a clean SVG with one click. Ideal for logos, icons, and hand-drawn artwork.</p></div>
+      <div class="step"><div class="step-num">03</div><h4>Brand kit builder</h4><p>Export a complete brand identity package — logo files, color palette, typography guide, and usage rules.</p></div>
+      <div class="step"><div class="step-num">04</div><h4>Pro designer marketplace</h4><p>Need a human touch? Hire from 340+ vetted professionals directly through the platform.</p></div>
+    </div>
+    <div class="cta-banner" style="margin:0 0 40px">
+      <h2>Ready to build your brand?</h2>
+      <p>Start with the AI wizard — free, no account required.</p>
+      <div class="hero-cta"><button class="btn btn-primary btn-large" onclick="showPage('wizard')">Launch the wizard →</button></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     HIRE MODAL
+════════════════════════════════════════════ -->
+<div class="modal-overlay" id="hireModal" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeHireModal()">✕</button>
+    <h3 id="modalDesignerName">Contact designer</h3>
+    <p>Send a message and this designer will respond within 24 hours to discuss your project scope and timeline.</p>
+    <div class="field"><label>Your project brief</label><textarea placeholder="Describe what you need — logo, full brand kit, illustrations..." style="min-height:100px"></textarea></div>
+    <div class="field"><label>Budget range</label><select><option>$50–$150</option><option>$150–$400</option><option>$400–$1000</option><option>$1000+</option></select></div>
+    <div class="field"><label>Email (for reply)</label><input type="email" placeholder="you@example.com"/></div>
+    <button class="btn btn-primary" style="width:100%;padding:12px;margin-top:4px" onclick="submitHire()">Send message →</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+
+<script>
+/* ─── PAGE ROUTER ─── */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById('page-' + id);
+  if (page) { page.classList.add('active'); window.scrollTo(0,0); }
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active-link'));
+  const navEl = document.getElementById('nav-' + id);
+  if (navEl) navEl.classList.add('active-link');
+  // Init page-specific content
+  if (id === 'discover') initDiscover();
+  if (id === 'mockup') initMockupTemplates();
+  if (id === 'fonts') generateFonts();
+}
+
+/* ─── TOAST ─── */
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => { t.className = 'toast'; }, 3200);
+}
+
+/* ─── TABS ─── */
+function setTab(btn, group) {
+  const container = btn.closest('div');
+  container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+/* ─── FILE UPLOAD TRIGGER ─── */
+function triggerUpload(id) { document.getElementById(id)?.click(); }
+
+/* ─── RESET TOOL ─── */
+function resetTool(resultId, processingId, uploadId) {
+  if (resultId) document.getElementById(resultId)?.classList.remove('show');
+  if (processingId) document.getElementById(processingId)?.classList.remove('show');
+  if (uploadId) document.getElementById(uploadId).style.display = 'block';
+}
+
+/* ─── BG REMOVER ─── */
+function handleBgUpload(e) {
+  const file = e.target.files[0]; if (!file) return;
+  const zone = document.getElementById('bgUploadZone');
+  zone.style.display = 'none';
+  document.getElementById('bgProcessing').classList.add('show');
+  setTimeout(() => {
+    document.getElementById('bgProcessing').classList.remove('show');
+    const preview = document.getElementById('bgPreview');
+    const reader = new FileReader();
+    reader.onload = ev => {
+      preview.innerHTML = `<img src="${ev.target.result}" style="max-width:100%;max-height:220px;border-radius:10px;border:1px solid var(--border2)"/>`;
+    };
+    reader.readAsDataURL(file);
+    document.getElementById('bgResult').classList.add('show');
+    showToast('✅ Background removed in 1.2 seconds!');
+  }, 2200);
+}
+
+/* ─── VECTORIZER ─── */
+function handleVecUpload(e) {
+  const file = e.target.files[0]; if (!file) return;
+  document.getElementById('vecProcessing').classList.add('show');
+  setTimeout(() => {
+    document.getElementById('vecProcessing').classList.remove('show');
+    document.getElementById('vecResult').classList.add('show');
+    showToast('✅ Vector conversion complete!');
+  }, 2600);
+}
+
+/* ─── PALETTE GENERATOR ─── */
+const PALETTES = {
+  'Modern & minimal': [['#0F172A','#1E293B','#475569','#94A3B8','#F1F5F9'],['Ink','Slate','Steel','Mist','Cloud']],
+  'Warm & earthy':    [['#3B1F0E','#7C4A2D','#C17A3A','#E8B878','#FAF0E2'],['Bark','Mahogany','Caramel','Honey','Cream']],
+  'Bold & vibrant':   [['#1A0533','#6C0BA9','#C730E8','#FF6BF8','#FFCBFF'],['Deep','Grape','Orchid','Candy','Blush']],
+  'Dark & luxurious': [['#0A0A0A','#1C1C1E','#2C2A40','#8C7BAA','#D4AF37'],['Jet','Obsidian','Dusk','Lavender','Gold']],
+  'Pastel & soft':    [['#FFD6E7','#C3B1E1','#B5EAD7','#FFDAC1','#E2F0CB'],['Blush','Periwinkle','Mint','Peach','Sage']],
+  'Neon & electric':  [['#0A0A0F','#1A0A3A','#4A00E0','#8E2DE2','#00F5FF'],['Black','Deep','Violet','Neon','Cyan']],
+};
+function generatePalette() {
+  const style = document.getElementById('paletteStyle').value;
+  const data = PALETTES[style] || PALETTES['Modern & minimal'];
+  const [colors, names] = data;
+  const swatches = document.getElementById('paletteSwatches');
+  const nameRow = document.getElementById('paletteNames');
+  swatches.innerHTML = '';
+  nameRow.innerHTML = '';
+  colors.forEach((c, i) => {
+    const s = document.createElement('div');
+    s.className = 'palette-swatch';
+    s.style.background = c;
+    s.title = c;
+    s.onclick = () => { navigator.clipboard?.writeText(c); showToast('📋 ' + c + ' copied!'); };
+    swatches.appendChild(s);
+    const n = document.createElement('div');
+    n.style.cssText = 'flex:1;text-align:center;font-size:0.72rem;color:var(--text3)';
+    n.textContent = names[i];
+    nameRow.appendChild(n);
+  });
+  document.getElementById('paletteOutput').style.display = 'block';
+  showToast('🎨 New palette generated!');
+}
+
+/* ─── FONT PAIRER ─── */
+const FONT_PAIRS = {
+  'Modern tech': [{display:'DM Serif Display',body:'DM Sans',dSample:'Vectify Studio',bSample:'Clean, modern type for digital-first brands that mean business.',tags:['Geometric','Sharp','Digital']},{display:'Clash Display',body:'Inter',dSample:'Vectify Studio',bSample:'Versatile and crisp — built for interfaces and product teams.',tags:['System','Minimal','UI']}],
+  'Luxury & editorial': [{display:'Playfair Display',body:'Cormorant',dSample:'Vectify Studio',bSample:'Editorial grace with classical proportions for premium brands.',tags:['Serif','Classical','Editorial']},{display:'Libre Baskerville',body:'EB Garamond',dSample:'Vectify Studio',bSample:'Timeless letterforms that whisper quality and refinement.',tags:['Classic','Elegant','Print']}],
+  'Friendly & approachable': [{display:'Nunito',body:'Lato',dSample:'Vectify Studio',bSample:'Rounded shapes that feel warm, human, and easy to trust.',tags:['Round','Warm','Accessible']},{display:'Quicksand',body:'Poppins',dSample:'Vectify Studio',bSample:'Soft geometry that makes even complex content feel inviting.',tags:['Soft','Geometric','Friendly']}],
+  'Bold & energetic': [{display:'Syne',body:'Space Grotesk',dSample:'Vectify Studio',bSample:'High-impact display with technical body copy for confident brands.',tags:['Wide','Bold','Impact']},{display:'Barlow Condensed',body:'Barlow',dSample:'Vectify Studio',bSample:'Athletic and compressed — built for brands that move fast.',tags:['Condensed','Sports','Dynamic']}],
+  'Classic & trustworthy': [{display:'Merriweather',body:'Source Sans 3',dSample:'Vectify Studio',bSample:'Grounded serif paired with a clean humanist for credibility.',tags:['Serif','Reliable','News']},{display:'Lora',body:'Noto Sans',dSample:'Vectify Studio',bSample:'Calligraphic warmth paired with universal readability.',tags:['Humanist','Classic','Universal']}],
+  'Creative & playful': [{display:'Righteous',body:'Mulish',dSample:'Vectify Studio',bSample:'Retro-inspired display with a contemporary body for creative studios.',tags:['Retro','Fun','Studio']},{display:'Lobster Two',body:'Open Sans',dSample:'Vectify Studio',bSample:'Script display with a neutral body for a friendly, hand-crafted feel.',tags:['Script','Handcrafted','Casual']}],
+};
+function generateFonts() {
+  const personality = document.getElementById('fontPersonality')?.value || 'Modern tech';
+  const previewText = document.getElementById('fontPreviewText')?.value || 'Vectify Studio';
+  const pairs = FONT_PAIRS[personality] || FONT_PAIRS['Modern tech'];
+  const out = document.getElementById('fontPairsOutput');
+  out.innerHTML = pairs.map(p => `
+    <div class="font-pair">
+      <div class="font-display-sample" style="font-family:'${p.display}',serif">${previewText}</div>
+      <div class="font-body-sample" style="font-family:'${p.body}',sans-serif">${p.bSample}</div>
+      <div class="font-meta">
+        <span class="font-tag">Display: ${p.display}</span>
+        <span class="font-tag">Body: ${p.body}</span>
+        ${p.tags.map(t=>`<span class="font-tag">${t}</span>`).join('')}
+      </div>
+      <button class="btn btn-outline" style="margin-top:14px;padding:8px 16px;font-size:0.82rem" onclick="showToast('✅ Font pairing saved!')">Save pairing</button>
+    </div>
+  `).join('');
+}
+function updateFontPreviews() { generateFonts(); }
+
+/* ─── PROMPT GENERATOR ─── */
+function generatePrompt() {
+  const brand = document.getElementById('pBrand').value || 'your brand';
+  const industry = document.getElementById('pIndustry').value;
+  const style = document.getElementById('pStyle').value;
+  const color = document.getElementById('pColor').value;
+  const concept = document.getElementById('pConcept').value;
+  const conceptPart = concept ? `, incorporating a ${concept}` : '';
+  const prompt = `A professional ${style.toLowerCase()} logo for "${brand}", a ${industry.toLowerCase()} brand${conceptPart}. Color palette: ${color.toLowerCase()}. The logo should convey trust and distinctiveness, rendered on a clean white background, vector-style, flat design, no gradients, high contrast, suitable for print and digital use.`;
+  const el = document.getElementById('promptText');
+  el.textContent = prompt;
+  document.getElementById('promptOutput').style.display = 'block';
+  const variants = [
+    `Minimal single-letter monogram for "${brand}" — ${style.toLowerCase()} aesthetic, ${color.toLowerCase()} palette.`,
+    `Abstract geometric mark for "${brand}" in ${industry.toLowerCase()}. ${style.toLowerCase()} style${conceptPart ? `, ${concept} motif` : ''}, ${color.toLowerCase()}.`,
+  ];
+  const vList = document.getElementById('variantList');
+  vList.innerHTML = variants.map(v => `
+    <div class="prompt-output" style="margin-bottom:10px;font-size:0.85rem;padding:14px 16px;position:relative">
+      <button class="copy-btn" onclick="navigator.clipboard?.writeText(this.nextElementSibling.textContent);showToast('📋 Copied!')">Copy</button>
+      <span>${v}</span>
+    </div>
+  `).join('');
+  document.getElementById('promptVariants').style.display = 'block';
+  showToast('✨ Prompt generated!');
+}
+function copyPrompt() {
+  const t = document.getElementById('promptText').textContent;
+  navigator.clipboard?.writeText(t);
+  showToast('📋 Prompt copied to clipboard!');
+}
+
+/* ─── WIZARD ─── */
+const LOGO_COLORS = [
+  ['#6C63FF','#38BDF8'],['#FF6B6B','#FFC300'],['#2ECC71','#1ABC9C'],
+  ['#E74C3C','#2C3E50'],['#F39C12','#D35400'],['#8E44AD','#3498DB'],
+];
+const SHAPES = [
+  { shape: (c1,c2) => `<svg width="80" height="80" viewBox="0 0 80 80"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><polygon points="40,8 72,60 8,60" fill="url(#g1)" rx="4"/></svg>` },
+  { shape: (c1,c2) => `<svg width="80" height="80" viewBox="0 0 80 80"><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><rect x="10" y="10" width="60" height="60" rx="14" fill="url(#g2)"/></svg>` },
+  { shape: (c1,c2) => `<svg width="80" height="80" viewBox="0 0 80 80"><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><circle cx="40" cy="40" r="32" fill="url(#g3)"/></svg>` },
+  { shape: (c1,c2) => `<svg width="80" height="80" viewBox="0 0 80 80"><defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><polygon points="40,8 72,28 72,52 40,72 8,52 8,28" fill="url(#g4)"/></svg>` },
+];
+function runWizard() {
+  const name = document.getElementById('wName').value || 'My Brand';
+  document.getElementById('wizardForm').style.display = 'none';
+  document.getElementById('wizardProcessing').classList.add('show');
+  const statuses = ['Analyzing brand personality...','Generating logo concepts...','Building color palette...','Selecting font pairings...','Assembling brand kit...'];
+  let i = 0;
+  const iv = setInterval(() => {
+    document.getElementById('wizardStatus').textContent = statuses[i];
+    i++;
+    if (i >= statuses.length) clearInterval(iv);
+  }, 600);
+  setTimeout(() => {
+    document.getElementById('wizardProcessing').classList.remove('show');
+    buildWizardResult(name);
+    document.getElementById('wizardResult').style.display = 'block';
+    showToast('🎉 Brand kit created successfully!');
+  }, 3200);
+}
+function buildWizardResult(name) {
+  const grid = document.getElementById('logoGrid');
+  grid.innerHTML = SHAPES.map((s, i) => {
+    const [c1,c2] = LOGO_COLORS[i];
+    return `<div class="logo-option" onclick="selectLogo(this)" title="Style ${i+1}">
+      ${s.shape(c1,c2)}
+      <div class="logo-option-name">Style ${i+1}</div>
+    </div>`;
+  }).join('');
+  const colors = LOGO_COLORS[Math.floor(Math.random()*LOGO_COLORS.length)];
+  const kit = document.getElementById('brandKit');
+  kit.innerHTML = `
+    <div class="kit-block">
+      <h5>Color palette</h5>
+      <div style="display:flex;gap:8px;margin-bottom:8px">
+        ${colors.map(c=>`<div style="width:40px;height:40px;background:${c};border-radius:8px;cursor:pointer" onclick="showToast('📋 ${c} copied!')" title="${c}"></div>`).join('')}
+        <div style="width:40px;height:40px;background:#F0F4FF;border-radius:8px;border:1px solid var(--border2)"></div>
+        <div style="width:40px;height:40px;background:#0B0F1A;border-radius:8px"></div>
+      </div>
+      <div style="font-size:0.8rem;color:var(--text3)">Primary · Accent · Light · Dark</div>
+    </div>
+    <div class="kit-block">
+      <h5>Typography</h5>
+      <div style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:4px">${name}</div>
+      <div style="font-size:0.84rem;color:var(--text2);font-family:'Inter',sans-serif">Syne (headings) · Inter (body)</div>
+    </div>
+    <div class="kit-block">
+      <h5>Export files</h5>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        ${['Logo SVG (vector)','Logo PNG (2×)','Brand PDF guide','Color swatches'].map(f=>`<div style="display:flex;align-items:center;justify-content:space-between;font-size:0.84rem;color:var(--text2)">${f}<button class="copy-btn" style="position:static" onclick="showToast('✅ ${f} downloaded!')">↓</button></div>`).join('')}
+      </div>
+    </div>
+    <div class="kit-block">
+      <h5>Brand voice</h5>
+      <div style="font-size:0.84rem;color:var(--text2);line-height:1.65">Professional, approachable, and forward-thinking. Clear language, active voice, no jargon.</div>
+    </div>
+  `;
+}
+function selectLogo(el) {
+  document.querySelectorAll('.logo-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  showToast('✅ Logo style selected!');
+}
+
+/* ─── INDUSTRY ─── */
+function industryClick(industry) {
+  const clean = industry.replace(/&amp;/g,'&');
+  document.getElementById('industryResultTitle').textContent = clean + ' logo concepts';
+  const grid = document.getElementById('industryLogoGrid');
+  grid.innerHTML = SHAPES.map((s, i) => {
+    const [c1,c2] = LOGO_COLORS[i % LOGO_COLORS.length];
+    return `<div class="logo-option" onclick="selectLogo(this)">${s.shape(c1,c2)}<div class="logo-option-name">Concept ${i+1}</div></div>`;
+  }).join('');
+  document.getElementById('industryResult').style.display = 'block';
+  document.getElementById('industryResult').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* ─── DISCOVER ─── */
+const DISCOVER_ITEMS = [
+  {name:'Nordic Roast',cat:'Coffee',bg:'linear-gradient(135deg,#3B1F0E,#C17A3A)',emoji:'☕'},
+  {name:'Flux OS',cat:'Technology',bg:'linear-gradient(135deg,#0A0533,#6C63FF)',emoji:'💻'},
+  {name:'Bloom Studio',cat:'Fashion',bg:'linear-gradient(135deg,#FF6B9D,#C44D8A)',emoji:'🌸'},
+  {name:'Ember Eats',cat:'Restaurant',bg:'linear-gradient(135deg,#C0392B,#E67E22)',emoji:'🍽️'},
+  {name:'PeakFit',cat:'Fitness',bg:'linear-gradient(135deg,#27AE60,#2ECC71)',emoji:'🏋️'},
+  {name:'Vault Finance',cat:'Finance',bg:'linear-gradient(135deg,#1A252F,#2C3E50)',emoji:'📈'},
+  {name:'Nova Agency',cat:'Creative',bg:'linear-gradient(135deg,#8E44AD,#3498DB)',emoji:'🎨'},
+  {name:'Terrа Homes',cat:'Real estate',bg:'linear-gradient(135deg,#7F8C8D,#BDC3C7)',emoji:'🏠'},
+];
+function initDiscover() {
+  const grid = document.getElementById('discoverGrid');
+  if (grid.children.length > 0) return;
+  grid.innerHTML = DISCOVER_ITEMS.map(d => `
+    <div class="discover-card" onclick="showToast('💾 "${d.name}" saved to your collection!')">
+      <div class="discover-thumb" style="background:${d.bg}">${d.emoji}</div>
+      <div class="discover-info"><h4>${d.name}</h4><p>${d.cat}</p></div>
+    </div>
+  `).join('');
+}
+function loadMoreDiscover() {
+  const grid = document.getElementById('discoverGrid');
+  const more = [...DISCOVER_ITEMS].reverse();
+  more.forEach(d => {
+    const card = document.createElement('div');
+    card.className = 'discover-card';
+    card.innerHTML = `<div class="discover-thumb" style="background:${d.bg}">${d.emoji}</div><div class="discover-info"><h4>${d.name} II</h4><p>${d.cat}</p></div>`;
+    card.onclick = () => showToast('💾 Saved to collection!');
+    grid.appendChild(card);
+  });
+  showToast('✅ 8 more designs loaded!');
+}
+
+/* ─── MOCKUP TEMPLATES ─── */
+const MOCKUP_TEMPLATES = [
+  {name:'iPhone 15 Pro',emoji:'📱',bg:'linear-gradient(135deg,#1a1a2e,#16213e)'},
+  {name:'Tote bag',emoji:'👜',bg:'linear-gradient(135deg,#2d3436,#636e72)'},
+  {name:'T-shirt',emoji:'👕',bg:'linear-gradient(135deg,#e17055,#d63031)'},
+  {name:'Coffee cup',emoji:'☕',bg:'linear-gradient(135deg,#3B1F0E,#7C4A2D)'},
+  {name:'Business card',emoji:'🪪',bg:'linear-gradient(135deg,#0A0533,#6C63FF)'},
+  {name:'Billboard',emoji:'🗺️',bg:'linear-gradient(135deg,#192a56,#273c75)'},
+];
+function initMockupTemplates() {
+  const grid = document.getElementById('mockupGrid');
+  if (!grid || grid.children.length > 0) return;
+  grid.innerHTML = MOCKUP_TEMPLATES.map(t => `
+    <div class="discover-card" onclick="applyMockup('${t.name}')">
+      <div class="discover-thumb" style="background:${t.bg}">${t.emoji}</div>
+      <div class="discover-info"><h4>${t.name}</h4><p>Click to apply</p></div>
+    </div>
+  `).join('');
+}
+function handleMockupUpload(e) {
+  const file = e.target.files[0]; if (!file) return;
+  document.getElementById('mockupStep2').style.display = 'block';
+  showToast('✅ Design uploaded! Now choose a mockup template.');
+  initMockupTemplates();
+}
+function applyMockup(name) {
+  document.getElementById('mockupResult').classList.add('show');
+  showToast('🎨 "' + name + '" mockup generated!');
+}
+
+/* ─── HIRE MODAL ─── */
+function openHireModal(name) {
+  document.getElementById('modalDesignerName').textContent = 'Contact ' + name;
+  document.getElementById('hireModal').classList.add('show');
+}
+function closeHireModal() { document.getElementById('hireModal').classList.remove('show'); }
+function closeModal(e) { if (e.target.id === 'hireModal') closeHireModal(); }
+function submitHire() { closeHireModal(); showToast('✅ Message sent! Expect a reply within 24 hours.', 'success'); }
+
+/* ─── DRAG-OVER ZONES ─── */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.upload-zone').forEach(zone => {
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+    zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('drag-over'); });
+  });
+  generateFonts();
+});
+</script>
 </body>
 </html>
