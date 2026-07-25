@@ -1,0 +1,985 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #0a0a0f;
+        color: #fff;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* NAV */
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 10, 15, 0.85);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .logo-mark {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, #7c3aed, #4f46e5);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+      }
+      .logo-text {
+        font-size: 18px;
+        font-weight: 700;
+        background: linear-gradient(90deg, #a78bfa, #818cf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        align-items: center;
+      }
+      .nav-links a {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        transition: color 0.2s;
+        cursor: pointer;
+      }
+      .nav-links a:hover {
+        color: #fff;
+      }
+      .nav-badge {
+        font-size: 10px;
+        background: linear-gradient(90deg, #7c3aed, #4f46e5);
+        color: #fff;
+        padding: 2px 8px;
+        border-radius: 20px;
+        font-weight: 600;
+        margin-left: 4px;
+      }
+      .nav-btn {
+        background: linear-gradient(135deg, #7c3aed, #4f46e5);
+        color: #fff;
+        padding: 9px 20px;
+        border-radius: 8px;
+        border: none;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        transition: opacity 0.2s;
+      }
+      .nav-btn:hover {
+        opacity: 0.85;
+      }
+
+      /* HERO */
+      .hero {
+        padding: 80px 40px 60px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-glow {
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 400px;
+        background: radial-gradient(
+          ellipse,
+          rgba(124, 58, 237, 0.25) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.35);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        color: #a78bfa;
+        font-weight: 500;
+        margin-bottom: 24px;
+      }
+      .badge i {
+        font-size: 11px;
+      }
+      .hero h1 {
+        font-size: 52px;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        letter-spacing: -1.5px;
+      }
+      .hero h1 span {
+        background: linear-gradient(
+          135deg,
+          #a78bfa 0%,
+          #818cf8 50%,
+          #38bdf8 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p {
+        font-size: 17px;
+        color: rgba(255, 255, 255, 0.55);
+        max-width: 520px;
+        margin: 0 auto 40px;
+        line-height: 1.7;
+        font-weight: 400;
+      }
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+      .stat {
+        text-align: center;
+      }
+      .stat-num {
+        font-size: 22px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #a78bfa, #38bdf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .stat-label {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 2px;
+      }
+
+      /* UPLOAD ZONE */
+      .upload-wrap {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .upload-zone {
+        border: 1.5px dashed rgba(124, 58, 237, 0.4);
+        border-radius: 20px;
+        padding: 52px 32px;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          rgba(124, 58, 237, 0.06),
+          rgba(79, 70, 229, 0.04)
+        );
+        transition: all 0.25s;
+      }
+      .upload-zone:hover,
+      .upload-zone.drag {
+        border-color: #7c3aed;
+        background: linear-gradient(
+          135deg,
+          rgba(124, 58, 237, 0.12),
+          rgba(79, 70, 229, 0.08)
+        );
+        transform: translateY(-2px);
+      }
+      .upload-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(
+          135deg,
+          rgba(124, 58, 237, 0.2),
+          rgba(79, 70, 229, 0.2)
+        );
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        font-size: 26px;
+        color: #a78bfa;
+      }
+      .upload-zone h2 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .upload-zone p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 20px;
+      }
+      .upload-zone input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+      }
+      .upload-formats {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .fmt-tag {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 500;
+      }
+      .upload-cta {
+        background: linear-gradient(135deg, #7c3aed, #4f46e5);
+        color: #fff;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        font-family: "Inter", sans-serif;
+        transition: all 0.2s;
+        position: relative;
+        z-index: 2;
+      }
+      .upload-cta:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+      }
+
+      /* FEATURES */
+      .features-section {
+        padding: 72px 40px 0;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .section-label {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: #7c3aed;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      .section-title {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 48px;
+        letter-spacing: -0.5px;
+      }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+      }
+      .feat-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.04),
+          rgba(255, 255, 255, 0.01)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 16px;
+        padding: 24px;
+        transition: all 0.25s;
+        position: relative;
+        overflow: hidden;
+      }
+      .feat-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #7c3aed, #4f46e5, #38bdf8);
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+      .feat-card:hover {
+        border-color: rgba(124, 58, 237, 0.3);
+        transform: translateY(-3px);
+      }
+      .feat-card:hover::before {
+        opacity: 1;
+      }
+      .feat-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        font-size: 18px;
+      }
+      .feat-card:nth-child(1) .feat-icon {
+        background: rgba(124, 58, 237, 0.15);
+        color: #a78bfa;
+      }
+      .feat-card:nth-child(2) .feat-icon {
+        background: rgba(56, 189, 248, 0.12);
+        color: #38bdf8;
+      }
+      .feat-card:nth-child(3) .feat-icon {
+        background: rgba(52, 211, 153, 0.12);
+        color: #34d399;
+      }
+      .feat-card:nth-child(4) .feat-icon {
+        background: rgba(251, 191, 36, 0.12);
+        color: #fbbf24;
+      }
+      .feat-card h3 {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #fff;
+      }
+      .feat-card p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.45);
+        line-height: 1.6;
+      }
+
+      /* HOW IT WORKS */
+      .steps-section {
+        padding: 72px 40px 0;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 12px;
+      }
+      .step-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 16px;
+        padding: 20px;
+        position: relative;
+      }
+      .step-num {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #7c3aed, #4f46e5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 14px;
+      }
+      .step-card h3 {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #fff;
+      }
+      .step-card p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        line-height: 1.55;
+      }
+      .step-arrow {
+        position: absolute;
+        right: -8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(124, 58, 237, 0.5);
+        font-size: 14px;
+        z-index: 1;
+      }
+
+      /* RESULT */
+      .result-area {
+        display: none;
+        max-width: 680px;
+        margin: 32px auto 0;
+        padding: 0 20px;
+      }
+      .result-area.visible {
+        display: block;
+      }
+      .result-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 24px;
+      }
+      .result-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+      .result-header h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .result-status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: #34d399;
+        font-weight: 500;
+      }
+      .result-status i {
+        font-size: 11px;
+      }
+      .preview-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .preview-pane {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .pane-label {
+        padding: 8px 14px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: rgba(255, 255, 255, 0.3);
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .pane-body {
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 180px;
+      }
+      .pane-body img,
+      .pane-body svg {
+        max-width: 100%;
+        max-height: 180px;
+        object-fit: contain;
+      }
+      .svg-wrap {
+        width: 100%;
+        height: 180px;
+        overflow: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .action-row {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+      }
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 10px 18px;
+        border-radius: 9px;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-family: "Inter", sans-serif;
+        transition: all 0.2s;
+      }
+      .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+      }
+      .btn-download {
+        background: linear-gradient(135deg, #7c3aed, #4f46e5);
+        color: #fff;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 9px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-family: "Inter", sans-serif;
+        transition: all 0.2s;
+      }
+      .btn-download:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+      }
+
+      /* PROCESSING */
+      .processing {
+        text-align: center;
+        padding: 32px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+      }
+      .proc-spinner {
+        width: 48px;
+        height: 48px;
+        border: 3px solid rgba(124, 58, 237, 0.2);
+        border-top-color: #7c3aed;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 14px;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* FOOTER */
+      .footer {
+        padding: 48px 40px 32px;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        margin-top: 72px;
+      }
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.35);
+        text-decoration: none;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .footer-copy {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.2);
+      }
+      .footer-logo {
+        font-size: 20px;
+        font-weight: 700;
+        background: linear-gradient(90deg, #a78bfa, #818cf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 16px;
+      }
+
+      /* BREADCRUMB */
+      .breadcrumb {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 20px;
+      }
+      .breadcrumb a {
+        color: rgba(124, 58, 237, 0.8);
+        cursor: pointer;
+      }
+      .breadcrumb span {
+        color: rgba(255, 255, 255, 0.15);
+      }
+
+      /* TRUST BAR */
+      .trust-bar {
+        max-width: 680px;
+        margin: 32px auto 0;
+        padding: 0 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 28px;
+        flex-wrap: wrap;
+      }
+      .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.35);
+      }
+      .trust-item i {
+        color: #7c3aed;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a class="nav-logo" href="#">
+        <div class="logo-mark">⬡</div>
+        <span class="logo-text">Vectify.io</span>
+      </a>
+      <div class="nav-links">
+        <a>Tools<span class="nav-badge">5</span></a>
+        <a>Pricing</a>
+        <a>API</a>
+        <a>Docs</a>
+      </div>
+      <button class="nav-btn">Get started free</button>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-glow"></div>
+      <div class="badge">
+        <i class="fa-solid fa-bolt"></i> Powered by AI vectorization
+      </div>
+      <h1>Convert images to<br /><span>perfect SVG vectors</span></h1>
+      <p>
+        Upload any PNG or JPG and get a clean, editable SVG in seconds. No
+        design skills needed — our AI handles every path and curve.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">2M+</div>
+          <div class="stat-label">Images converted</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">99.8%</div>
+          <div class="stat-label">Accuracy rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">&lt;5s</div>
+          <div class="stat-label">Average time</div>
+        </div>
+      </div>
+
+      <div class="upload-wrap">
+        <div class="upload-zone" id="dropZone">
+          <div class="upload-icon">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+          </div>
+          <h2>Drop your image here to vectorize</h2>
+          <p>Or click to browse your files</p>
+          <button
+            class="upload-cta"
+            onclick="event.stopPropagation()"
+            id="browseBtn"
+          >
+            <i class="fa-solid fa-folder-open"></i> Browse files
+          </button>
+          <div class="upload-formats">
+            <span class="fmt-tag">PNG</span>
+            <span class="fmt-tag">JPG</span>
+            <span class="fmt-tag">JPEG</span>
+            <span class="fmt-tag">Up to 10 MB</span>
+            <span class="fmt-tag">Free forever</span>
+          </div>
+          <input type="file" id="fileInput" accept="image/png,image/jpeg" />
+        </div>
+
+        <div class="trust-bar">
+          <div class="trust-item">
+            <i class="fa-solid fa-shield-halved"></i> No account needed
+          </div>
+          <div class="trust-item">
+            <i class="fa-solid fa-lock"></i> Files deleted after 1 hour
+          </div>
+          <div class="trust-item">
+            <i class="fa-solid fa-infinity"></i> Unlimited conversions
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="result-area" id="resultArea">
+      <div id="processingMsg" class="processing">
+        <div class="proc-spinner"></div>
+        Tracing vectors — this takes just a moment…
+      </div>
+      <div id="resultCard" class="result-card" style="display: none">
+        <div class="result-header">
+          <h3>Conversion complete</h3>
+          <div class="result-status">
+            <i class="fa-solid fa-circle-check"></i> SVG ready
+          </div>
+        </div>
+        <div class="preview-grid">
+          <div class="preview-pane">
+            <div class="pane-label">Original</div>
+            <div class="pane-body">
+              <img id="originalPreview" src="" alt="Original uploaded image" />
+            </div>
+          </div>
+          <div class="preview-pane">
+            <div class="pane-label">SVG vector output</div>
+            <div class="pane-body">
+              <div class="svg-wrap" id="svgPreview"></div>
+            </div>
+          </div>
+        </div>
+        <div class="action-row">
+          <button class="btn-ghost" id="resetBtn">
+            <i class="fa-solid fa-rotate-left"></i> Convert another
+          </button>
+          <button class="btn-download" id="downloadBtn">
+            <i class="fa-solid fa-download"></i> Download SVG
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section class="features-section">
+      <div class="section-label">Why Vectify</div>
+      <div class="section-title">Everything you need in one tool</div>
+      <div class="features-grid">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h3>AI-powered tracing</h3>
+          <p>
+            Intelligent path detection produces clean, editable SVG output — not
+            a blob of noise.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><i class="fa-solid fa-expand"></i></div>
+          <h3>Infinitely scalable</h3>
+          <p>
+            Vectors stay crisp from 16px favicon to 10-metre billboard print.
+            Zero quality loss.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><i class="fa-solid fa-pen-nib"></i></div>
+          <h3>Editable paths</h3>
+          <p>
+            Open the SVG in Illustrator, Figma, or Inkscape and edit every node
+            instantly.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Lightning fast</h3>
+          <p>
+            Most images are traced and ready to download in under 5 seconds — no
+            queue.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps-section">
+      <div
+        class="section-label"
+        style="text-align: center; margin-bottom: 12px"
+      >
+        How it works
+      </div>
+      <div class="section-title">Four steps to a perfect vector</div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Upload image</h3>
+          <p>Drag and drop a PNG or JPG, or click to browse your files</p>
+          <div class="step-arrow">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>AI traces paths</h3>
+          <p>
+            Our model detects edges, colors, and shapes and converts them to
+            clean vector paths
+          </p>
+          <div class="step-arrow">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Preview SVG</h3>
+          <p>See both versions side by side before you commit to downloading</p>
+          <div class="step-arrow">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h3>Download free</h3>
+          <p>Save your scalable SVG file — no watermark, no account required</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-logo">Vectify.io</div>
+      <div class="footer-links">
+        <a>Background Remover</a>
+        <a>Image Compressor</a>
+        <a>PNG to WebP</a>
+        <a>Privacy Policy</a>
+        <a>Terms</a>
+        <a>Contact</a>
+      </div>
+      <div class="footer-copy">© 2026 Vectify.io — Free AI image tools</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/imagetracerjs@1.2.6/imagetracer_v1.2.6.min.js"></script>
+    <script>
+      const dropZone = document.getElementById("dropZone");
+      const fileInput = document.getElementById("fileInput");
+      const browseBtn = document.getElementById("browseBtn");
+      const resultArea = document.getElementById("resultArea");
+      const processingMsg = document.getElementById("processingMsg");
+      const resultCard = document.getElementById("resultCard");
+      const originalPreview = document.getElementById("originalPreview");
+      const svgPreview = document.getElementById("svgPreview");
+      const downloadBtn = document.getElementById("downloadBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      let svgString = "";
+
+      browseBtn.addEventListener("click", () => fileInput.click());
+      dropZone.addEventListener("click", (e) => {
+        if (e.target !== browseBtn) fileInput.click();
+      });
+      dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZone.classList.add("drag");
+      });
+      dropZone.addEventListener("dragleave", () =>
+        dropZone.classList.remove("drag"),
+      );
+      dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropZone.classList.remove("drag");
+        const f = e.dataTransfer.files[0];
+        if (f) processFile(f);
+      });
+      fileInput.addEventListener("change", () => {
+        if (fileInput.files[0]) processFile(fileInput.files[0]);
+      });
+
+      function processFile(file) {
+        if (!file.type.match(/image\/(png|jpeg)/)) return;
+        const url = URL.createObjectURL(file);
+        originalPreview.src = url;
+        resultArea.style.display = "block";
+        processingMsg.style.display = "block";
+        resultCard.style.display = "none";
+        resultArea.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          const MAX = 800;
+          let w = img.width,
+            h = img.height;
+          if (w > MAX) {
+            h = Math.round((h * MAX) / w);
+            w = MAX;
+          }
+          if (h > MAX) {
+            w = Math.round((w * MAX) / h);
+            h = MAX;
+          }
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, w, h);
+          const imgData = ctx.getImageData(0, 0, w, h);
+          setTimeout(() => {
+            try {
+              svgString = ImageTracer.imagedataToSVG(imgData, "posterized2");
+              svgPreview.innerHTML = svgString;
+              const svgEl = svgPreview.querySelector("svg");
+              if (svgEl) {
+                svgEl.style.width = "100%";
+                svgEl.style.height = "100%";
+                svgEl.style.maxHeight = "180px";
+              }
+              processingMsg.style.display = "none";
+              resultCard.style.display = "block";
+            } catch (e) {
+              processingMsg.innerHTML =
+                '<div style="color:#f87171;font-size:14px"><i class="fa-solid fa-triangle-exclamation" style="display:block;font-size:24px;margin-bottom:10px"></i>Could not trace this image. Try a PNG with fewer colors or a simpler illustration.</div>';
+            }
+            URL.revokeObjectURL(url);
+          }, 80);
+        };
+        img.src = url;
+      }
+
+      downloadBtn.addEventListener("click", () => {
+        if (!svgString) return;
+        const blob = new Blob([svgString], { type: "image/svg+xml" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "vectify-output.svg";
+        a.click();
+      });
+
+      resetBtn.addEventListener("click", () => {
+        resultArea.style.display = "none";
+        resultCard.style.display = "none";
+        processingMsg.style.display = "none";
+        fileInput.value = "";
+        svgString = "";
+        svgPreview.innerHTML = "";
+        originalPreview.src = "";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>
